@@ -16,17 +16,58 @@
       flex-direction: column;
       min-height: 100vh;
     }
+
+    /* --- HEADER --- */
     header {
       background-color: #2d4f6a;
       color: white;
       padding: 15px 0;
-      text-align: center;
+      position: relative;
     }
+
+    .header-content {
+      display: flex;
+      justify-content: center; /* căn giữa dòng chữ */
+      align-items: center;
+      position: relative;
+    }
+
     header h1 {
       margin: 0;
       font-size: 22px;
       letter-spacing: 1px;
+      text-align: center;
     }
+
+    /* --- Nút về trang chủ --- */
+    .vetrangchu {
+      position: absolute;
+      right: 30px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .vetrangchu .btn {
+      padding: 8px 16px;
+      border: 2px solid white;
+      background: transparent;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 14px;
+    }
+
+    .vetrangchu .btn:hover {
+      background: white;
+      color: #2d4f6a;
+    }
+
+    /* --- Bố cục trang --- */
     .container {
       display: flex;
       max-width: 1200px;
@@ -36,6 +77,7 @@
       flex: 1;
       width: 100%;
     }
+
     .sidebar {
       width: 280px;
       background: #fff;
@@ -44,19 +86,23 @@
       padding: 20px;
       height: fit-content;
     }
+
     .sidebar h3 {
       font-size: 18px;
       margin-bottom: 15px;
       border-bottom: 2px solid #3498db;
       padding-bottom: 8px;
     }
+
     .sidebar ul {
       list-style: none;
       padding-left: 0;
     }
+
     .sidebar li {
       margin-bottom: 10px;
     }
+
     .sidebar a {
       text-decoration: none;
       color: #333;
@@ -65,10 +111,13 @@
       border-radius: 6px;
       transition: all 0.2s;
     }
-    .sidebar a:hover, .sidebar a.active {
+
+    .sidebar a:hover,
+    .sidebar a.active {
       background: #3498db;
       color: white;
     }
+
     .content {
       flex: 1;
       background: #fff;
@@ -76,21 +125,26 @@
       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
       padding: 30px;
     }
+
     .content h2 {
       color: #3498db;
       margin-bottom: 20px;
     }
+
     .content p {
       line-height: 1.7;
       margin-bottom: 15px;
       text-align: justify;
     }
+
     .content-section {
       display: none;
     }
+
     .content-section.active {
       display: block;
     }
+
     footer {
       background-color: #31465a;
       color: #fff;
@@ -98,11 +152,19 @@
       padding: 15px 0;
     }
   </style>
+
 </head>
 
 <body>
   <header>
-    <h1>TRƯỜNG THCS & THPT CHẤT LƯỢNG CAO</h1>
+    <div class="header-content">
+      <h1>TRƯỜNG THCS & THPT CHẤT LƯỢNG CAO</h1>
+      <div class="vetrangchu">
+        <a href="index.html" class="btn btn-outline">
+          <i class="fas fa-arrow-left"></i> Về Trang Chủ
+        </a>
+      </div>
+    </div>
   </header>
 
   <div class="container">
@@ -256,8 +318,21 @@
         // Ẩn hết section, chỉ hiện cái được chọn
         sections.forEach(sec => sec.classList.remove('active'));
         document.getElementById(targetId).classList.add('active');
+
+        // Cập nhật URL thành #targetId
+        window.location.hash = targetId;
       });
     });
+
+    // Khi tải trang -> nếu có # trên URL thì mở đúng phần đó
+    window.addEventListener('load', () => {
+      const hash = window.location.hash.substring(1);
+      if (hash) {
+        const activeItem = document.querySelector(`.menu-item[data-target="${hash}"]`);
+        if (activeItem) activeItem.click();
+      }
+    });
   </script>
+
 </body>
 </html>
