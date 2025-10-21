@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quy Định Điểm Số - Hỗ Trợ Giáo Viên</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reset và base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #3498db, #2c3e50);
+            color: white;
+            padding: 18px 0;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        
+        /* Nút trở về trang chủ */
+        .home-btn {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+        }
+        
+        .home-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-50%) scale(1.05);
+        }
+        
+        header h1 {
+            margin: 0;
+            font-size: 24px;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+        
+        /* Container chính */
+        .container {
+            display: flex;
+            max-width: 1200px;
+            margin: 40px auto;
+            gap: 30px;
+            padding: 0 20px;
+            flex: 1;
+        }
+        
+        /* Sidebar */
+        .sidebar {
+            width: 280px;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            padding: 25px;
+            height: fit-content;
+            position: sticky;
+            top: 20px;
+        }
+        
+        .sidebar h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+            color: #2c3e50;
+        }
+        
+        .sidebar ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .sidebar li {
+            margin-bottom: 12px;
+        }
+        
+        .sidebar a {
+            text-decoration: none;
+            color: #444;
+            display: block;
+            padding: 10px 15px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+        
+        .sidebar a:hover {
+            background: #3498db;
+            color: white;
+            transform: translateX(5px);
+        }
+        
+        .sidebar a.active {
+            background: #3498db;
+            color: white;
+            box-shadow: 0 4px 8px rgba(52, 152, 219, 0.3);
+        }
+        
+        .sidebar i {
+            margin-right: 10px;
+            width: 20px;
+            text-align: center;
+        }
+        
+        /* Main content */
+        .content {
+            flex: 1;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            padding: 35px;
+        }
+        
+        .content h2 {
+            color: #2c3e50;
+            margin-bottom: 25px;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 12px;
+            font-size: 28px;
+        }
+        
+        .content p {
+            margin-bottom: 20px;
+            text-align: justify;
+            font-size: 16px;
+            color: #555;
+        }
+        
+        /* Phần giới thiệu */
+        .intro-section {
+            background: linear-gradient(to bottom right, #f8f9fa, #e9ecef);
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 35px;
+            border-left: 5px solid #3498db;
+        }
+        
+        .intro-section p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        
+        /* Bảng quy định */
+        .regulation-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .regulation-table th {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+            padding: 18px 15px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 16px;
+        }
+        
+        .regulation-table td {
+            padding: 16px 15px;
+            border-bottom: 1px solid #eee;
+            transition: all 0.3s ease;
+        }
+        
+        .regulation-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .regulation-table tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+        
+        .regulation-table tr:hover {
+            background-color: #f0f7ff;
+            transform: translateY(-1px);
+            box-shadow: 0 2px 8px rgba(52, 152, 219, 0.1);
+        }
+        
+        .test-type {
+            font-weight: 600;
+            color: #2c3e50;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .test-type i {
+            color: #3498db;
+            width: 20px;
+        }
+        
+        .coefficient {
+            font-weight: 700;
+            color: #e74c3c;
+            font-size: 18px;
+        }
+        
+        .frequency {
+            color: #27ae60;
+            font-weight: 500;
+        }
+        
+        /* Phần thông tin bổ sung */
+        .info-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .info-card {
+            background: #fff;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+            border-top: 4px solid #3498db;
+            transition: all 0.3s ease;
+        }
+        
+        .info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+        }
+        
+        .info-card h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .info-card h3 i {
+            color: #3498db;
+        }
+        
+        .info-card p {
+            color: #555;
+            font-size: 15px;
+            margin-bottom: 0;
+        }
+        
+        /* Phần lưu ý */
+        .note-section {
+            background: linear-gradient(to right, #eef7fe, #e3f2fd);
+            padding: 25px;
+            border-radius: 10px;
+            margin-top: 35px;
+            border-left: 5px solid #e74c3c;
+            position: relative;
+        }
+        
+        .note-section::before {
+            content: '!';
+            position: absolute;
+            top: -15px;
+            left: -15px;
+            background: #e74c3c;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 18px;
+        }
+        
+        .note-section h3 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+        
+        .note-section p {
+            color: #555;
+            margin-bottom: 0;
+        }
+        
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            color: #ecf0f1;
+            text-align: center;
+            padding: 25px 0;
+            margin-top: auto;
+        }
+        
+        footer p {
+            margin: 0;
+            font-size: 15px;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .container {
+                flex-direction: column;
+            }
+            
+            .sidebar {
+                width: 100%;
+                position: static;
+            }
+            
+            .home-btn {
+                position: static;
+                transform: none;
+                margin: 10px auto;
+                display: inline-flex;
+                justify-content: center;
+                background: rgba(255, 255, 255, 0.3);
+            }
+            
+            header {
+                padding: 15px 0;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                margin: 20px auto;
+                gap: 20px;
+            }
+            
+            .content {
+                padding: 25px;
+            }
+            
+            .regulation-table {
+                display: block;
+                overflow-x: auto;
+            }
+            
+            .info-cards {
+                grid-template-columns: 1fr;
+            }
+            
+            header h1 {
+                font-size: 20px;
+            }
+            
+            .content h2 {
+                font-size: 24px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .content {
+                padding: 20px;
+            }
+            
+            .intro-section {
+                padding: 20px;
+            }
+            
+            .regulation-table th,
+            .regulation-table td {
+                padding: 12px 10px;
+            }
+            
+            .note-section {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <a href="index.html" class="home-btn">
+            <i class="fas fa-home"></i> Trang Chủ
+        </a>
+        <h1>CÔNG TY CỔ PHẦN GIÁO DỤC EDU</h1>
+    </header>
+
+    <div class="container">
+        <!-- Menu bên trái -->
+        <aside class="sidebar">
+            <h3>Danh Mục Hỗ Trợ & Tài Nguyên</h3>
+            <ul>
+                <li>
+                    <a href="nhapdiem.html"><i class="fas fa-keyboard"></i> Hướng dẫn nhập điểm</a>
+                </li>
+                <li>
+                    <a href="quyche.html"><i class="fas fa-scroll"></i> Quy chế đánh giá</a>
+                </li>
+                <li>
+                    <a href="mau.html"><i class="fas fa-file-alt"></i> Mẫu báo cáo</a>
+                </li>
+                <li>
+                    <a href="lienhekythuat.html"><i class="fas fa-headset"></i> Liên hệ kỹ thuật</a>
+                </li>
+                <li>
+                    <a href="bieumau.html"><i class="fas fa-clipboard-list"></i> Biểu mẫu đánh giá</a>
+                </li>
+                <li>
+                    <a href="quydinh.html" class="active"><i class="fas fa-balance-scale"></i> Quy định điểm số</a>
+                </li>
+                <li>
+                    <a href="template.html"><i class="fas fa-file-code"></i> Template báo cáo</a>
+                </li>
+                <li>
+                    <a href="faqs.html"><i class="fas fa-question-circle"></i> FAQs</a>
+                </li>
+            </ul>
+        </aside>
+
+        <!-- Nội dung bên phải -->
+        <main class="content">
+            <h2>Quy Định Điểm Số</h2>
+            
+            <div class="intro-section">
+                <p>Việc đánh giá kết quả học tập của học sinh được thực hiện theo đúng quy chế của Bộ Giáo dục và Đào tạo. Dưới đây là bảng quy định chi tiết về thang điểm, trọng số và quy tắc làm tròn điểm.</p>
+                <p>Tất cả giáo viên cần tuân thủ nghiêm ngặt các quy định này để đảm bảo tính công bằng và minh bạch trong đánh giá kết quả học tập của học sinh.</p>
+            </div>
+            
+            <table class="regulation-table">
+                <thead>
+                    <tr>
+                        <th width="220">Loại Bài Kiểm Tra</th>
+                        <th width="100">Hệ Số</th>
+                        <th width="200">Số Lần</th>
+                        <th>Mô Tả</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <div class="test-type">
+                                <i class="fas fa-microphone-alt"></i>
+                                <span>Kiểm tra miệng</span>
+                            </div>
+                        </td>
+                        <td><span class="coefficient">1</span></td>
+                        <td><span class="frequency">Tối thiểu 2 lần / học kỳ</span></td>
+                        <td>Đánh giá sự chuẩn bị bài và khả năng trình bày miệng của học sinh</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="test-type">
+                                <i class="fas fa-clock"></i>
+                                <span>Kiểm tra 15 phút</span>
+                            </div>
+                        </td>
+                        <td><span class="coefficient">1</span></td>
+                        <td><span class="frequency">Tối thiểu 2 lần / học kỳ</span></td>
+                        <td>Kiểm tra nhanh kiến thức từng chương, chủ đề nhỏ</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="test-type">
+                                <i class="fas fa-file-alt"></i>
+                                <span>Kiểm tra 1 tiết</span>
+                            </div>
+                        </td>
+                        <td><span class="coefficient">2</span></td>
+                        <td><span class="frequency">Tối thiểu 2 lần / học kỳ</span></td>
+                        <td>Đánh giá kiến thức tổng hợp của một phần nội dung lớn</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="test-type">
+                                <i class="fas fa-graduation-cap"></i>
+                                <span>Kiểm tra học kỳ</span>
+                            </div>
+                        </td>
+                        <td><span class="coefficient">3</span></td>
+                        <td><span class="frequency">1 lần / học kỳ</span></td>
+                        <td>Bài thi tổng hợp toàn bộ kiến thức của học kỳ</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div class="info-cards">
+                <div class="info-card">
+                    <h3><i class="fas fa-calculator"></i> Cách Tính Điểm</h3>
+                    <p>Điểm trung bình môn = (Điểm miệng + Điểm 15 phút + Điểm 1 tiết × 2 + Điểm học kỳ × 3) / (Tổng số bài kiểm tra có hệ số tương ứng)</p>
+                </div>
+                
+                <div class="info-card">
+                    <h3><i class="fas fa-chart-line"></i> Quy Tắc Làm Tròn</h3>
+                    <p>Điểm trung bình môn được làm tròn đến 1 chữ số thập phân. Từ 0.25 trở lên làm tròn lên 0.3, dưới 0.25 làm tròn xuống 0.0.</p>
+                </div>
+                
+                <div class="info-card">
+                    <h3><i class="fas fa-calendar-alt"></i> Thời Hạn Nhập Điểm</h3>
+                    <p>Điểm kiểm tra thường xuyên: Trong vòng 3 ngày sau khi kiểm tra. Điểm học kỳ: Trong vòng 7 ngày sau khi kết thúc kỳ thi.</p>
+                </div>
+            </div>
+            
+            <div class="note-section">
+                <h3>Lưu ý Quan Trọng</h3>
+                <p>Điểm trung bình môn học được tính theo công thức trung bình cộng có trọng số, làm tròn đến 1 chữ số thập phân. Mọi hình thức gian lận trong kiểm tra đều bị xử lý theo quy định của nhà trường. Giáo viên chịu trách nhiệm về tính chính xác và công bằng của điểm số đã nhập.</p>
+            </div>
+        </main>
+    </div>
+
+    <footer>
+        <p>
+            &copy; 2024 Trường THCS & THPT Chất Lượng Cao. Tất cả quyền được bảo lưu.
+        </p>
+    </footer>
+</body>
+</html>

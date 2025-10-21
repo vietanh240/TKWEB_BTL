@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Điều Khoản Sử Dụng - THCS & THPT Chất Lượng Cao</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      /* Reset và base styles */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      
+      body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: #f5f7fa;
+        color: #333;
+        line-height: 1.6;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+      
+      /* Header */
+      header {
+        background: linear-gradient(135deg, #3498db, #2c3e50);
+        color: white;
+        padding: 18px 0;
+        text-align: center;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        position: relative;
+      }
+      
+      header h1 {
+        margin: 0;
+        font-size: 24px;
+        letter-spacing: 1px;
+        font-weight: 600;
+      }
+      
+      /* Nút trở về trang chủ */
+      .home-btn {
+        position: absolute;
+        left: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(255, 255, 255, 0.2);
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 6px;
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        text-decoration: none;
+      }
+      
+      .home-btn:hover {
+        background: rgba(255, 255, 255, 0.3);
+        transform: translateY(-50%) scale(1.05);
+      }
+      
+      /* Container chính */
+      .container {
+        max-width: 1000px;
+        margin: 40px auto;
+        padding: 0 20px;
+        flex: 1;
+      }
+      
+      /* Main content */
+      .content {
+        background: #fff;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        padding: 40px;
+      }
+      
+      .content h2 {
+        color: #2c3e50;
+        margin-bottom: 25px;
+        border-bottom: 2px solid #f0f0f0;
+        padding-bottom: 12px;
+        font-size: 28px;
+      }
+      
+      .content p {
+        margin-bottom: 20px;
+        text-align: justify;
+        font-size: 16px;
+        color: #555;
+      }
+      
+      /* Hero Section */
+      .hero-section {
+        background: linear-gradient(135deg, #3498db, #2980b9);
+        color: white;
+        padding: 40px;
+        border-radius: 12px;
+        margin-bottom: 35px;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+      
+      .hero-section::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" fill="%23ffffff" opacity="0.1"><polygon points="1000,100 1000,0 0,100"/></svg>');
+        background-size: cover;
+      }
+      
+      .hero-content {
+        position: relative;
+        z-index: 1;
+      }
+      
+      .hero-section h3 {
+        font-size: 32px;
+        margin-bottom: 15px;
+        font-weight: 700;
+      }
+      
+      .hero-section p {
+        font-size: 18px;
+        max-width: 800px;
+        margin: 0 auto;
+        text-align: center;
+        color: white;
+      }
+      
+      /* Terms Sections */
+      .terms-section {
+        margin: 30px 0;
+        padding: 25px;
+        background: #f8f9fa;
+        border-radius: 10px;
+        border-left: 4px solid #3498db;
+        transition: all 0.3s ease;
+      }
+      
+      .terms-section:hover {
+        background: #e9ecef;
+        transform: translateX(5px);
+      }
+      
+      .terms-section h3 {
+        color: #2c3e50;
+        margin-bottom: 15px;
+        font-size: 20px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      
+      .terms-section h3 i {
+        color: #3498db;
+      }
+      
+      .terms-section p {
+        color: #555;
+        line-height: 1.7;
+      }
+      
+      .terms-section ul {
+        color: #555;
+        margin-left: 20px;
+        margin-bottom: 15px;
+      }
+      
+      .terms-section li {
+        margin-bottom: 8px;
+        line-height: 1.6;
+      }
+      
+      /* Contact Info */
+      .contact-info {
+        background: linear-gradient(135deg, #2c3e50, #34495e);
+        color: white;
+        padding: 30px;
+        border-radius: 12px;
+        margin: 40px 0;
+        text-align: center;
+      }
+      
+      .contact-info h3 {
+        margin-bottom: 20px;
+        color: #3498db;
+      }
+
+      .contact-info p {
+        padding-left:27%;
+        color: #a8dcff;
+        margin-bottom: 20px;
+      }
+      
+      .contact-details {
+        display: flex;
+        justify-content: center;
+        gap: 40px;
+        flex-wrap: wrap;
+      }
+      
+      .contact-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 16px;
+      }
+      
+      .contact-item i {
+        color: #3498db;
+        font-size: 20px;
+      }
+      
+      /* Footer */
+      footer {
+        background: linear-gradient(135deg, #2c3e50, #34495e);
+        color: #ecf0f1;
+        text-align: center;
+        padding: 25px 0;
+        margin-top: auto;
+      }
+      
+      footer p {
+        margin: 0;
+        font-size: 15px;
+      }
+      
+      /* Responsive Design */
+      @media (max-width: 992px) {
+        .home-btn {
+          position: static;
+          transform: none;
+          margin: 10px auto;
+          display: inline-flex;
+          justify-content: center;
+        }
+        .contact-info p {
+          padding: 0% 20%;
+
+        }
+        
+        header {
+          padding: 15px 0;
+        }
+        
+        .contact-details {
+          flex-direction: column;
+          gap: 20px;
+        }
+      }
+      
+      @media (max-width: 768px) {
+        .container {
+          margin: 20px auto;
+        }
+        
+        .content {
+          padding: 25px;
+        }
+        
+        .hero-section {
+          padding: 30px 20px;
+        }
+        
+        .hero-section h3 {
+          font-size: 26px;
+        }
+        
+        .terms-section {
+          padding: 20px;
+        }
+        
+        header h1 {
+          font-size: 20px;
+        }
+        
+        .content h2 {
+          font-size: 24px;
+        }
+      }
+      
+      @media (max-width: 576px) {
+        .content {
+          padding: 20px;
+        }
+        
+        .hero-section {
+          padding: 25px 15px;
+        }
+        
+        .hero-section h3 {
+          font-size: 22px;
+        }
+        
+        .terms-section h3 {
+          font-size: 18px;
+        }
+        
+        .home-btn {
+          font-size: 13px;
+          padding: 8px 15px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <a href="index.html" class="home-btn">
+        <i class="fas fa-home"></i> Trang Chủ
+      </a>
+      <h1>CÔNG TY CỔ PHẦN GIÁO DỤC EDU</h1>
+    </header>
+
+    <div class="container">
+      <!-- Nội dung chính -->
+      <main class="content">
+        <div class="hero-section">
+          <div class="hero-content">
+            <h3><i class="fas fa-file-contract"></i> Điều Khoản Sử Dụng</h3>
+            <p>Quy định và hướng dẫn sử dụng hệ thống</p>
+          </div>
+        </div>
+        
+        <h2>Điều Khoản Sử Dụng Hệ Thống</h2>
+        <p>
+          CÔNG TY CỔ PHẦN GIÁO DỤC EDU xin trân trọng chào đón Quý thầy cô, học sinh và phụ huynh đến với hệ thống quản lý giáo dục. Việc sử dụng trang web đồng nghĩa với việc bạn đồng ý tuân thủ các điều khoản dưới đây.
+        </p>
+        
+        <div class="terms-section">
+          <h3><i class="fas fa-info-circle"></i> 1. Giới Thiệu</h3>
+          <p>
+            Trang web quản lý điểm và thông tin học sinh được phát triển nhằm hỗ
+            trợ giáo viên trong công tác giảng dạy, đánh giá, và trao đổi với học
+            sinh. Hệ thống cung cấp các tính năng quản lý điểm, thông báo kết quả học tập, và kết nối giữa nhà trường - giáo viên - phụ huynh.
+          </p>
+        </div>
+        
+        <div class="terms-section">
+          <h3><i class="fas fa-users"></i> 2. Quy Định Người Dùng</h3>
+          <p>
+            Người dùng phải cung cấp thông tin chính xác, không chia sẻ tài khoản
+            cá nhân cho người khác. Nhà trường có quyền tạm khóa tài khoản nếu
+            phát hiện hành vi vi phạm.
+          </p>
+          <ul>
+            <li>Cung cấp thông tin chính xác và đầy đủ khi đăng ký tài khoản</li>
+            <li>Không chia sẻ tài khoản cá nhân cho người khác sử dụng</li>
+            <li>Báo cáo ngay lập tức nếu phát hiện tài khoản bị xâm nhập trái phép</li>
+            <li>Tuân thủ các quy định về bảo mật thông tin</li>
+          </ul>
+        </div>
+        
+        <div class="terms-section">
+          <h3><i class="fas fa-balance-scale"></i> 3. Trách Nhiệm Và Quyền Hạn</h3>
+          <p>
+            Phân định rõ trách nhiệm và quyền hạn của các bên liên quan trong việc sử dụng hệ thống.
+          </p>
+          <ul>
+            <li><strong>Giáo viên:</strong> Chịu trách nhiệm về tính chính xác của dữ liệu nhập điểm và thông tin học tập</li>
+            <li><strong>Nhà trường:</strong> Chịu trách nhiệm về việc bảo mật thông tin và duy trì hệ thống hoạt động ổn định</li>
+            <li><strong>Học sinh & Phụ huynh:</strong> Có trách nhiệm bảo mật thông tin tài khoản và sử dụng hệ thống đúng mục đích</li>
+            <li><strong>Tất cả người dùng:</strong> Không được can thiệp, xâm nhập hoặc làm gián đoạn hoạt động của trang web</li>
+          </ul>
+        </div>
+        
+        <div class="terms-section">
+          <h3><i class="fas fa-sync-alt"></i> 4. Sửa Đổi Điều Khoản</h3>
+          <p>
+            Nhà trường có quyền thay đổi hoặc cập nhật các điều khoản bất kỳ lúc
+            nào mà không cần thông báo trước. Người dùng cần thường xuyên kiểm tra
+            để đảm bảo hiểu rõ các quy định hiện hành.
+          </p>
+          <p>
+            Việc tiếp tục sử dụng hệ thống sau khi có các thay đổi được xem như bạn đã chấp nhận các điều khoản sửa đổi.
+          </p>
+        </div>
+        
+        <div class="contact-info">
+          <h3><i class="fas fa-headset"></i> Liên Hệ Hỗ Trợ</h3>
+          <p>Mọi thắc mắc về điều khoản sử dụng, vui lòng liên hệ:</p>
+          <div class="contact-details">
+            <div class="contact-item">
+              <i class="fas fa-envelope"></i>
+              <span>hotro@truongclc.edu.vn</span>
+            </div>
+            <div class="contact-item">
+              <i class="fas fa-phone"></i>
+              <span>(024) 1234 5678</span>
+            </div>
+            <div class="contact-item">
+              <i class="fas fa-clock"></i>
+              <span>Thứ 2 - Thứ 6: 7h30 - 17h00</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="terms-section">
+          <h3><i class="fas fa-exclamation-triangle"></i> 5. Quy Định Xử Lý Vi Phạm</h3>
+          <p>
+            Mọi hành vi vi phạm điều khoản sử dụng sẽ được xử lý theo quy định của nhà trường:
+          </p>
+          <ul>
+            <li>Cảnh cáo và yêu cầu chấm dứt hành vi vi phạm</li>
+            <li>Tạm khóa tài khoản trong thời gian xác minh</li>
+            <li>Khóa vĩnh viễn tài khoản đối với các vi phạm nghiêm trọng</li>
+            <li>Xử lý theo quy định pháp luật nếu có thiệt hại xảy ra</li>
+          </ul>
+        </div>
+      </main>
+    </div>
+
+    <footer>
+      <p>
+        &copy; 2024 CÔNG TY CỔ PHẦN GIÁO DỤC EDU. Tất cả quyền được bảo lưu.
+      </p>
+    </footer>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        console.log('Trang điều khoản sử dụng đã được tải');
+      });
+    </script>
+  </body>
+</html>

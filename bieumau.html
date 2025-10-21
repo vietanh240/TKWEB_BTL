@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biểu Mẫu Đánh Giá - Hỗ Trợ Giáo Viên</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reset và base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #3498db, #2c3e50);
+            color: white;
+            padding: 18px 0;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        
+        /* Nút trở về trang chủ */
+        .home-btn {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+        }
+        
+        .home-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-50%) scale(1.05);
+        }
+        
+        header h1 {
+            margin: 0;
+            font-size: 24px;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+        
+        /* Container chính */
+        .container {
+            display: flex;
+            max-width: 1200px;
+            margin: 40px auto;
+            gap: 30px;
+            padding: 0 20px;
+            flex: 1;
+        }
+        
+        /* Sidebar */
+        .sidebar {
+            width: 280px;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            padding: 25px;
+            height: fit-content;
+            position: sticky;
+            top: 20px;
+        }
+        
+        .sidebar h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+            color: #2c3e50;
+        }
+        
+        .sidebar ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .sidebar li {
+            margin-bottom: 12px;
+        }
+        
+        .sidebar a {
+            text-decoration: none;
+            color: #444;
+            display: block;
+            padding: 10px 15px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+        
+        .sidebar a:hover {
+            background: #3498db;
+            color: white;
+            transform: translateX(5px);
+        }
+        
+        .sidebar a.active {
+            background: #3498db;
+            color: white;
+            box-shadow: 0 4px 8px rgba(52, 152, 219, 0.3);
+        }
+        
+        .sidebar i {
+            margin-right: 10px;
+            width: 20px;
+            text-align: center;
+        }
+        
+        /* Main content */
+        .content {
+            flex: 1;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            padding: 35px;
+        }
+        
+        .content h2 {
+            color: #2c3e50;
+            margin-bottom: 25px;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 12px;
+            font-size: 28px;
+        }
+        
+        .content p {
+            margin-bottom: 20px;
+            text-align: justify;
+            font-size: 16px;
+            color: #555;
+        }
+        
+        /* Phần giới thiệu */
+        .intro-section {
+            background: linear-gradient(to bottom right, #f8f9fa, #e9ecef);
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 35px;
+            border-left: 5px solid #3498db;
+        }
+        
+        .intro-section p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        
+        /* Bảng biểu mẫu */
+        .forms-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .forms-table th {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+        
+        .forms-table td {
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .forms-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .forms-table tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+        
+        .forms-table tr:hover {
+            background-color: #f0f7ff;
+        }
+        
+        .form-name {
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        
+        .form-description {
+            color: #666;
+            font-size: 14px;
+        }
+        
+        /* Nút tải về */
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, #2ecc71, #27ae60);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        
+        .download-btn:hover {
+            background: linear-gradient(135deg, #27ae60, #219653);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(46, 204, 113, 0.3);
+        }
+        
+        .download-all {
+            margin-top: 30px;
+            text-align: center;
+        }
+        
+        .download-all-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        
+        .download-all-btn:hover {
+            background: linear-gradient(135deg, #2980b9, #2573a7);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(52, 152, 219, 0.3);
+        }
+        
+        /* Thông báo tải về */
+        .download-notification {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #2ecc71;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.4s ease;
+            z-index: 1000;
+        }
+        
+        .download-notification.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            color: #ecf0f1;
+            text-align: center;
+            padding: 25px 0;
+            margin-top: auto;
+        }
+        
+        footer p {
+            margin: 0;
+            font-size: 15px;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .container {
+                flex-direction: column;
+            }
+            
+            .sidebar {
+                width: 100%;
+                position: static;
+            }
+            
+            .home-btn {
+                position: static;
+                transform: none;
+                margin: 10px auto;
+                display: inline-flex;
+                justify-content: center;
+                background: rgba(255, 255, 255, 0.3);
+            }
+            
+            header {
+                padding: 15px 0;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                margin: 20px auto;
+                gap: 20px;
+            }
+            
+            .content {
+                padding: 25px;
+            }
+            
+            .forms-table {
+                display: block;
+                overflow-x: auto;
+            }
+            
+            header h1 {
+                font-size: 20px;
+            }
+            
+            .content h2 {
+                font-size: 24px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .content {
+                padding: 20px;
+            }
+            
+            .intro-section {
+                padding: 20px;
+            }
+            
+            .forms-table th,
+            .forms-table td {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <a href="index.html" class="home-btn">
+            <i class="fas fa-home"></i> Trang Chủ
+        </a>
+        <h1>CÔNG TY CỔ PHẦN GIÁO DỤC EDU</h1>
+    </header>
+
+    <div class="container">
+        <!-- Menu bên trái -->
+        <aside class="sidebar">
+            <h3>Danh Mục Hỗ Trợ & Tài Nguyên</h3>
+            <ul>
+                <li>
+                    <a href="nhapdiem.html"><i class="fas fa-keyboard"></i> Hướng dẫn nhập điểm</a>
+                </li>
+                <li>
+                    <a href="quyche.html"><i class="fas fa-scroll"></i> Quy chế đánh giá</a>
+                </li>
+                <li>
+                    <a href="mau.html"><i class="fas fa-file-alt"></i> Mẫu báo cáo</a>
+                </li>
+                <li>
+                    <a href="lienhekythuat.html"><i class="fas fa-headset"></i> Liên hệ kỹ thuật</a>
+                </li>
+                <li>
+                    <a href="bieumau.html" class="active"><i class="fas fa-clipboard-list"></i> Biểu mẫu đánh giá</a>
+                </li>
+                <li>
+                    <a href="quydinh.html"><i class="fas fa-balance-scale"></i> Quy định điểm số</a>
+                </li>
+                <li>
+                    <a href="template.html"><i class="fas fa-file-code"></i> Template báo cáo</a>
+                </li>
+                <li>
+                    <a href="faqs.html"><i class="fas fa-question-circle"></i> FAQs</a>
+                </li>
+            </ul>
+        </aside>
+
+        <!-- Nội dung bên phải -->
+        <main class="content">
+            <h2>Biểu Mẫu Đánh Giá</h2>
+            
+            <div class="intro-section">
+                <p>Các biểu mẫu dưới đây được sử dụng để đánh giá học sinh theo quy định của Bộ Giáo dục và Đào tạo. Giáo viên có thể tải xuống, in hoặc điền trực tiếp trên hệ thống.</p>
+                <p>Tất cả biểu mẫu đều được cập nhật theo quy định mới nhất và có sẵn ở nhiều định dạng để thuận tiện cho việc sử dụng.</p>
+            </div>
+            
+            <table class="forms-table">
+                <thead>
+                    <tr>
+                        <th width="60">STT</th>
+                        <th>Tên Biểu Mẫu</th>
+                        <th width="200">Định Dạng</th>
+                        <th width="150">Tải Xuống</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>
+                            <div class="form-name">Biểu mẫu đánh giá học kỳ I</div>
+                            <div class="form-description">Phiếu tổng hợp điểm và nhận xét học sinh học kỳ I</div>
+                        </td>
+                        <td>DOCX, PDF</td>
+                        <td>
+                            <a href="#" class="download-btn" data-file="BM_DanhGia_HK1.docx">
+                                <i class="fas fa-download"></i> Tải về
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>
+                            <div class="form-name">Biểu mẫu đánh giá học kỳ II</div>
+                            <div class="form-description">Phiếu tổng hợp điểm và nhận xét học sinh học kỳ II</div>
+                        </td>
+                        <td>DOCX, PDF</td>
+                        <td>
+                            <a href="#" class="download-btn" data-file="BM_DanhGia_HK2.docx">
+                                <i class="fas fa-download"></i> Tải về
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>
+                            <div class="form-name">Biểu mẫu đánh giá năng lực</div>
+                            <div class="form-description">Dành cho các môn đánh giá năng lực học sinh (Khoa học, Tin học...)</div>
+                        </td>
+                        <td>DOCX, PDF, XLSX</td>
+                        <td>
+                            <a href="#" class="download-btn" data-file="BM_DanhGia_NangLuc.docx">
+                                <i class="fas fa-download"></i> Tải về
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>
+                            <div class="form-name">Biểu mẫu nhận xét giáo viên</div>
+                            <div class="form-description">Nhận xét định kỳ của giáo viên chủ nhiệm cho từng học sinh</div>
+                        </td>
+                        <td>DOCX, PDF</td>
+                        <td>
+                            <a href="#" class="download-btn" data-file="BM_NhanXet_GiaoVien.docx">
+                                <i class="fas fa-download"></i> Tải về
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>
+                            <div class="form-name">Biểu mẫu đánh giá phẩm chất</div>
+                            <div class="form-description">Đánh giá phẩm chất, đạo đức học sinh theo tháng/học kỳ</div>
+                        </td>
+                        <td>DOCX, PDF</td>
+                        <td>
+                            <a href="#" class="download-btn" data-file="BM_DanhGia_PhamChat.docx">
+                                <i class="fas fa-download"></i> Tải về
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>
+                            <div class="form-name">Biểu mẫu tổng kết năm học</div>
+                            <div class="form-description">Tổng hợp kết quả học tập và rèn luyện cả năm</div>
+                        </td>
+                        <td>DOCX, PDF, XLSX</td>
+                        <td>
+                            <a href="#" class="download-btn" data-file="BM_TongKet_NamHoc.docx">
+                                <i class="fas fa-download"></i> Tải về
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div class="download-all">
+                <a href="#" class="download-all-btn" id="downloadAll">
+                    <i class="fas fa-file-archive"></i> Tải tất cả biểu mẫu (.ZIP)
+                </a>
+            </div>
+        </main>
+    </div>
+
+    <div class="download-notification" id="downloadNotification">
+        <i class="fas fa-check-circle"></i>
+        <span id="notificationText">Đang tải xuống...</span>
+    </div>
+
+    <footer>
+        <p>
+            &copy; 2024 Trường THCS & THPT Chất Lượng Cao. Tất cả quyền được bảo lưu.
+        </p>
+    </footer>
+
+    <script>
+        // Tạo các file biểu mẫu mẫu để tải về
+        function createSampleFile(filename, content) {
+            const blob = new Blob([content], { type: 'application/octet-stream' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = filename;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+        
+        // Nội dung mẫu cho các file
+        const fileContents = {
+            'BM_DanhGia_HK1.docx': 'BIỂU MẪU ĐÁNH GIÁ HỌC KỲ I\n\nHọ và tên học sinh: ___________________\nLớp: ________\n\nĐiểm trung bình: ______\nXếp loại học lực: ______\nXếp loại hạnh kiểm: ______\n\nNhận xét của giáo viên:\n______________________________________________________\n______________________________________________________\n\nChữ ký giáo viên\n___________________',
+            
+            'BM_DanhGia_HK2.docx': 'BIỂU MẪU ĐÁNH GIÁ HỌC KỲ II\n\nHọ và tên học sinh: ___________________\nLớp: ________\n\nĐiểm trung bình: ______\nXếp loại học lực: ______\nXếp loại hạnh kiểm: ______\n\nNhận xét của giáo viên:\n______________________________________________________\n______________________________________________________\n\nChữ ký giáo viên\n___________________',
+            
+            'BM_DanhGia_NangLuc.docx': 'BIỂU MẪU ĐÁNH GIÁ NĂNG LỰC\n\nHọ và tên học sinh: ___________________\nLớp: ________\nMôn học: ___________________\n\nTiêu chí đánh giá:\n1. Khả năng tiếp thu kiến thức: ______\n2. Kỹ năng thực hành: ______\n3. Khả năng sáng tạo: ______\n4. Kỹ năng làm việc nhóm: ______\n\nNhận xét:\n______________________________________________________\n______________________________________________________\n\nChữ ký giáo viên\n___________________',
+            
+            'BM_NhanXet_GiaoVien.docx': 'BIỂU MẪU NHẬN XÉT GIÁO VIÊN\n\nHọ và tên học sinh: ___________________\nLớp: ________\n\nNhận xét về học tập:\n______________________________________________________\n______________________________________________________\n\nNhận xét về phẩm chất, năng lực:\n______________________________________________________\n______________________________________________________\n\nĐề xuất, kiến nghị:\n______________________________________________________\n\nChữ ký giáo viên chủ nhiệm\n___________________',
+            
+            'BM_DanhGia_PhamChat.docx': 'BIỂU MẪU ĐÁNH GIÁ PHẨM CHẤT\n\nHọ và tên học sinh: ___________________\nLớp: ________\nThời gian đánh giá: ___________________\n\nTiêu chí đánh giá:\n1. Chấp hành nội quy nhà trường: ______\n2. Ý thức học tập: ______\n3. Thái độ với thầy cô, bạn bè: ______\n4. Tham gia hoạt động tập thể: ______\n\nNhận xét:\n______________________________________________________\n______________________________________________________\n\nChữ ký giáo viên\n___________________',
+            
+            'BM_TongKet_NamHoc.docx': 'BIỂU MẪU TỔNG KẾT NĂM HỌC\n\nHọ và tên học sinh: ___________________\nLớp: ________\nNăm học: ________\n\nKết quả học tập:\n- Học kỳ I: ______\n- Học kỳ II: ______\n- Cả năm: ______\n\nKhen thưởng:\n______________________________________________________\n\nNhận xét của giáo viên chủ nhiệm:\n______________________________________________________\n______________________________________________________\n\nChữ ký giáo viên chủ nhiệm\n___________________',
+            
+            'ALL_FORMS.zip': 'Đây là file ZIP chứa tất cả các biểu mẫu đánh giá.'
+        };
+        
+        // Hiển thị thông báo tải về
+        function showDownloadNotification(filename) {
+            const notification = document.getElementById('downloadNotification');
+            const notificationText = document.getElementById('notificationText');
+            
+            notificationText.textContent = `Đã tải xuống: ${filename}`;
+            notification.classList.add('show');
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000);
+        }
+        
+        // Xử lý sự kiện click cho các nút tải về
+        document.querySelectorAll('.download-btn').forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                const filename = this.getAttribute('data-file');
+                createSampleFile(filename, fileContents[filename]);
+                showDownloadNotification(filename);
+            });
+        });
+        
+        // Xử lý sự kiện click cho nút tải tất cả
+        document.getElementById('downloadAll').addEventListener('click', function(e) {
+            e.preventDefault();
+            createSampleFile('ALL_FORMS.zip', fileContents['ALL_FORMS.zip']);
+            showDownloadNotification('ALL_FORMS.zip');
+        });
+    </script>
+</body>
+</html>

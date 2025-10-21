@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hướng Dẫn Sử Dụng - Công Ty Giáo Dục EDU</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reset và base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        
+        /* Header */
+        /* Header */
+header {
+    background: linear-gradient(135deg, #3498db, #2c3e50);
+    color: white;
+    padding: 18px 0;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    position: relative; /* THÊM DÒNG NÀY */
+}
+
+/* Nút trở về trang chủ */
+.home-btn {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+}
+
+.home-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-50%) scale(1.05);
+}
+        
+        header h1 {
+            margin: 0;
+            font-size: 24px;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+        
+        /* Container chính */
+        .container {
+            display: flex;
+            max-width: 1200px;
+            margin: 40px auto;
+            gap: 30px;
+            padding: 0 20px;
+            flex: 1;
+        }
+        
+        /* Sidebar */
+        .sidebar {
+            width: 280px;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            padding: 25px;
+            height: fit-content;
+            position: sticky;
+            top: 20px;
+        }
+        
+        .sidebar h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+            color: #2c3e50;
+        }
+        
+        .sidebar ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .sidebar li {
+            margin-bottom: 12px;
+        }
+        
+        .sidebar a {
+            text-decoration: none;
+            color: #444;
+            display: block;
+            padding: 10px 15px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+        
+        .sidebar a:hover {
+            background: #3498db;
+            color: white;
+            transform: translateX(5px);
+        }
+        
+        .sidebar a.active {
+            background: #3498db;
+            color: white;
+            box-shadow: 0 4px 8px rgba(52, 152, 219, 0.3);
+        }
+        
+        .sidebar i {
+            margin-right: 10px;
+            width: 20px;
+            text-align: center;
+        }
+        
+        /* Main content */
+        .content {
+            flex: 1;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            padding: 35px;
+        }
+        
+        .content h2 {
+            color: #2c3e50;
+            margin-bottom: 25px;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 12px;
+            font-size: 28px;
+        }
+        
+        .content p {
+            margin-bottom: 20px;
+            text-align: justify;
+            font-size: 16px;
+            color: #555;
+        }
+        
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+            padding: 40px;
+            border-radius: 12px;
+            margin-bottom: 35px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" fill="%23ffffff" opacity="0.1"><polygon points="1000,100 1000,0 0,100"/></svg>');
+            background-size: cover;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero-section h3 {
+            font-size: 32px;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+        
+        .hero-section p {
+            font-size: 18px;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        /* Quick Access Section */
+        .quick-access {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
+        }
+        
+        .quick-card {
+            background: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            border-top: 5px solid #3498db;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .quick-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .quick-icon {
+            font-size: 50px;
+            color: #3498db;
+            margin-bottom: 20px;
+        }
+        
+        .quick-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+        
+        .quick-desc {
+            color: #666;
+            font-size: 14px;
+        }
+        
+        /* Tutorial Sections */
+        .tutorial-section {
+            margin: 40px 0;
+        }
+        
+        .tutorial-item {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 20px;
+            border-left: 4px solid #3498db;
+        }
+        
+        .tutorial-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            cursor: pointer;
+        }
+        
+        .tutorial-number {
+            background: #3498db;
+            color: white;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+        
+        .tutorial-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        
+        .tutorial-content {
+            padding-left: 50px;
+        }
+        
+        .tutorial-step {
+            margin-bottom: 15px;
+            padding: 15px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+        
+        .step-number {
+            display: inline-block;
+            background: #e74c3c;
+            color: white;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 25px;
+            font-weight: 600;
+            margin-right: 10px;
+        }
+        
+        /* Video Section */
+        .video-section {
+            margin: 40px 0;
+        }
+        
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 25px;
+        }
+        
+        .video-card {
+            background: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease;
+        }
+        
+        .video-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .video-thumbnail {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            height: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 60px;
+        }
+        
+        .video-info {
+            padding: 20px;
+        }
+        
+        .video-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        
+        .video-duration {
+            color: #666;
+            font-size: 14px;
+        }
+        
+        /* FAQ Section */
+        .faq-section {
+            margin: 40px 0;
+        }
+        
+        .faq-item {
+            background: #fff;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+        }
+        
+        .faq-question {
+            background: #f8f9fa;
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+        
+        .faq-question:hover {
+            background: #e9ecef;
+        }
+        
+        .faq-answer {
+            padding: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            background: white;
+        }
+        
+        .faq-item.active .faq-answer {
+            padding: 20px;
+            max-height: 500px;
+        }
+        
+        /* Support Section */
+        .support-section {
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            color: white;
+            padding: 40px;
+            border-radius: 12px;
+            margin: 40px 0;
+            text-align: center;
+        }
+        
+        .support-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .support-btn {
+            background: #3498db;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .support-btn:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+        }
+        
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            color: #ecf0f1;
+            text-align: center;
+            padding: 25px 0;
+            margin-top: auto;
+        }
+        
+        footer p {
+            margin: 0;
+            font-size: 15px;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .container {
+                flex-direction: column;
+            }
+            
+            .sidebar {
+                width: 100%;
+                position: static;
+            }
+            .home-btn {
+        position: static;
+        transform: none;
+        margin: 10px auto;
+        display: inline-flex;
+        justify-content: center;
+        background: rgba(255, 255, 255, 0.3);
+    }
+    
+    header {
+        padding: 15px 0;
+    }
+
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                margin: 20px auto;
+                gap: 20px;
+            }
+            
+            .content {
+                padding: 25px;
+            }
+            
+            .hero-section {
+                padding: 30px 20px;
+            }
+            
+            .hero-section h3 {
+                font-size: 26px;
+            }
+            
+            .quick-access {
+                grid-template-columns: 1fr;
+            }
+            
+            .video-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .tutorial-content {
+                padding-left: 0;
+            }
+            
+            .support-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            header h1 {
+                font-size: 20px;
+            }
+            
+            .content h2 {
+                font-size: 24px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .content {
+                padding: 20px;
+            }
+            
+            .hero-section {
+                padding: 25px 15px;
+            }
+            
+            .hero-section h3 {
+                font-size: 22px;
+            }
+            
+            .tutorial-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .tutorial-number {
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <a href="index.html" class="home-btn">
+  <i class="fas fa-home"></i> Trang Chủ
+</a>
+        <h1>CÔNG TY CỔ PHẦN GIÁO DỤC EDU</h1>
+    </header>
+
+    <div class="container">
+        <!-- Menu bên trái -->
+        <aside class="sidebar">
+            <h3>Giới thiệu & Hỗ trợ</h3>
+            <ul>
+                <li>
+                    <a href="gioithieu.html"><i class="fas fa-info-circle"></i> Giới thiệu</a>
+                </li>
+                <li>
+                    <a href="thanhtich.html"><i class="fas fa-trophy"></i> Thành tích</a>
+                </li>
+                <li>
+                    <a href="bangiamhieu.html"><i class="fas fa-user-tie"></i> Ban lãnh đạo</a>
+                </li>
+                <li>
+                    <a href="lichsu.html"><i class="fas fa-history"></i> Lịch sử phát triển</a>
+                </li>
+                <li>
+                    <a href="huongdan.html" class="active"><i class="fas fa-book"></i> Hướng dẫn sử dụng</a>
+                </li>
+                <li>
+                    <a href="lienhe.html"><i class="fas fa-phone"></i> Liên hệ</a>
+                </li>
+                <li>
+                    <a href="cauhoi.html"><i class="fas fa-question-circle"></i> Câu hỏi thường gặp</a>
+                </li>
+                <li>
+                    <a href="gopy.html"><i class="fas fa-comment-dots"></i> Góp ý hệ thống</a>
+                </li>
+            </ul>
+        </aside>
+
+        <!-- Nội dung bên phải -->
+        <main class="content">
+            <div class="hero-section">
+                <div class="hero-content">
+                    <h3>Hướng Dẫn Sử Dụng</h3>
+                    <p>Khám phá tất cả tính năng của hệ thống giáo dục thông minh</p>
+                </div>
+            </div>
+            
+            <h2>Hướng Dẫn Sử Dụng Hệ Thống</h2>
+            <p>
+                Hệ thống quản lý giáo dục EDU được thiết kế để hỗ trợ tối đa cho giáo viên, học sinh và phụ huynh trong quá trình dạy và học. Dưới đây là hướng dẫn chi tiết để sử dụng hiệu quả tất cả các tính năng của hệ thống.
+            </p>
+            
+            <div class="quick-access">
+                <div class="quick-card" onclick="scrollToSection('dang-nhap')">
+                    <div class="quick-icon">
+                        <i class="fas fa-sign-in-alt"></i>
+                    </div>
+                    <div class="quick-title">Đăng Nhập</div>
+                    <div class="quick-desc">Hướng dẫn đăng nhập và bảo mật tài khoản</div>
+                </div>
+                
+                <div class="quick-card" onclick="scrollToSection('quan-ly-hoc-tap')">
+                    <div class="quick-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <div class="quick-title">Quản Lý Học Tập</div>
+                    <div class="quick-desc">Theo dõi kết quả và lịch học</div>
+                </div>
+                
+                <div class="quick-card" onclick="scrollToSection('tai-lieu')">
+                    <div class="quick-icon">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <div class="quick-title">Tài Liệu</div>
+                    <div class="quick-desc">Truy cập và quản lý tài liệu học tập</div>
+                </div>
+                
+                <div class="quick-card" onclick="scrollToSection('ho-tro')">
+                    <div class="quick-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <div class="quick-title">Hỗ Trợ</div>
+                    <div class="quick-desc">Liên hệ và được hỗ trợ kỹ thuật</div>
+                </div>
+            </div>
+            
+            <div class="tutorial-section">
+                <div class="tutorial-item" id="dang-nhap">
+                    <div class="tutorial-header">
+                        <div class="tutorial-number">1</div>
+                        <div class="tutorial-title">Đăng Nhập Hệ Thống</div>
+                    </div>
+                    <div class="tutorial-content">
+                        <div class="tutorial-step">
+                            <span class="step-number">1</span>
+                            Truy cập trang đăng nhập của hệ thống
+                        </div>
+                        <div class="tutorial-step">
+                            <span class="step-number">2</span>
+                            Nhập tên đăng nhập và mật khẩu được cấp
+                        </div>
+                        <div class="tutorial-step">
+                            <span class="step-number">3</span>
+                            Chọn vai trò (Giáo viên/Học sinh/Phụ huynh)
+                        </div>
+                        <div class="tutorial-step">
+                            <span class="step-number">4</span>
+                            Click "Đăng nhập" để vào hệ thống
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tutorial-item" id="quan-ly-hoc-tap">
+                    <div class="tutorial-header">
+                        <div class="tutorial-number">2</div>
+                        <div class="tutorial-title">Quản Lý Học Tập & Điểm Số</div>
+                    </div>
+                    <div class="tutorial-content">
+                        <div class="tutorial-step">
+                            <span class="step-number">1</span>
+                            Truy cập mục "Kết quả học tập" trên menu chính
+                        </div>
+                        <div class="tutorial-step">
+                            <span class="step-number">2</span>
+                            Xem điểm các môn học theo học kỳ
+                        </div>
+                        <div class="tutorial-step">
+                            <span class="step-number">3</span>
+                            Theo dõi điểm trung bình và xếp loại
+                        </div>
+                        <div class="tutorial-step">
+                            <span class="step-number">4</span>
+                            Tải báo cáo kết quả học tập dạng PDF
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tutorial-item" id="tai-lieu">
+                    <div class="tutorial-header">
+                        <div class="tutorial-number">3</div>
+                        <div class="tutorial-title">Quản Lý Tài Liệu Học Tập</div>
+                    </div>
+                    <div class="tutorial-content">
+                        <div class="tutorial-step">
+                            <span class="step-number">1</span>
+                            Vào mục "Thư viện tài liệu" từ menu
+                        </div>
+                        <div class="tutorial-step">
+                            <span class="step-number">2</span>
+                            Tìm kiếm tài liệu theo môn học hoặc từ khóa
+                        </div>
+                        <div class="tutorial-step">
+                            <span class="step-number">3</span>
+                            Tải xuống tài liệu cần thiết
+                        </div>
+                        <div class="tutorial-step">
+                            <span class="step-number">4</span>
+                            Giáo viên có thể upload tài liệu mới
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="video-section">
+                <h2>Video Hướng Dẫn</h2>
+                <div class="video-grid">
+                    <div class="video-card">
+                        <div class="video-thumbnail">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                        <div class="video-info">
+                            <div class="video-title">Hướng dẫn đăng nhập lần đầu</div>
+                            <div class="video-duration">5:30 phút</div>
+                        </div>
+                    </div>
+                    
+                    <div class="video-card">
+                        <div class="video-thumbnail">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                        <div class="video-info">
+                            <div class="video-title">Quản lý điểm và kết quả học tập</div>
+                            <div class="video-duration">8:15 phút</div>
+                        </div>
+                    </div>
+                    
+                    <div class="video-card">
+                        <div class="video-thumbnail">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                        <div class="video-info">
+                            <div class="video-title">Sử dụng thư viện tài liệu</div>
+                            <div class="video-duration">6:45 phút</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </main>
+    </div>
+
+    <footer>
+        <p>
+            &copy; 2024 Công ty Cổ phần Giáo dục EDU. Tất cả quyền được bảo lưu.
+        </p>
+    </footer>
+
+    <script>
+        // Xử lý FAQ accordion
+        document.addEventListener('DOMContentLoaded', function() {
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                
+                question.addEventListener('click', () => {
+                    item.classList.toggle('active');
+                });
+            });
+        });
+        
+        // Scroll to section function
+        function scrollToSection(sectionId) {
+            const element = document.getElementById(sectionId);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+    </script>
+</body>
+</html>

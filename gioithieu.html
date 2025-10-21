@@ -1,338 +1,591 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Giới thiệu & Hỗ trợ - THCS & THPT Chất Lượng Cao</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="css/style.css">
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #fafafa;
-      color: #333;
-      margin: 0;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giới Thiệu - THCS & THPT Chất Lượng Cao</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reset và base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        
+        /* Header */
+        
+header {
+    background: linear-gradient(135deg, #3498db, #2c3e50);
+    color: white;
+    padding: 18px 0;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    position: relative; /* THÊM DÒNG NÀY */
+}
 
-    /* --- HEADER --- */
-    header {
-      background-color: #2d4f6a;
-      color: white;
-      padding: 15px 0;
-      position: relative;
-    }
+/* Nút trở về trang chủ */
+.home-btn {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+}
 
-    .header-content {
-      display: flex;
-      justify-content: center; /* căn giữa dòng chữ */
-      align-items: center;
-      position: relative;
-    }
-
-    header h1 {
-      margin: 0;
-      font-size: 22px;
-      letter-spacing: 1px;
-      text-align: center;
-    }
-
-    /* --- Nút về trang chủ --- */
-    .vetrangchu {
-      position: absolute;
-      right: 30px;
-      top: 50%;
-      transform: translateY(-50%);
-    }
-
-    .vetrangchu .btn {
-      padding: 8px 16px;
-      border: 2px solid white;
-      background: transparent;
-      color: white;
-      text-decoration: none;
-      border-radius: 5px;
-      font-weight: 600;
-      transition: all 0.3s ease;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 14px;
-    }
-
-    .vetrangchu .btn:hover {
-      background: white;
-      color: #2d4f6a;
-    }
-
-    /* --- Bố cục trang --- */
+.home-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-50%) scale(1.05);
+}
+        
+        header h1 {
+            margin: 0;
+            font-size: 24px;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+        
+        /* Container chính */
+        .container {
+            display: flex;
+            max-width: 1200px;
+            margin: 40px auto;
+            gap: 30px;
+            padding: 0 20px;
+            flex: 1;
+        }
+        
+        /* Sidebar */
+        .sidebar {
+            width: 280px;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            padding: 25px;
+            height: fit-content;
+            position: sticky;
+            top: 20px;
+        }
+        
+        .sidebar h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+            color: #2c3e50;
+        }
+        
+        .sidebar ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .sidebar li {
+            margin-bottom: 12px;
+        }
+        
+        .sidebar a {
+            text-decoration: none;
+            color: #444;
+            display: block;
+            padding: 10px 15px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+        
+        .sidebar a:hover {
+            background: #3498db;
+            color: white;
+            transform: translateX(5px);
+        }
+        
+        .sidebar a.active {
+            background: #3498db;
+            color: white;
+            box-shadow: 0 4px 8px rgba(52, 152, 219, 0.3);
+        }
+        
+        .sidebar i {
+            margin-right: 10px;
+            width: 20px;
+            text-align: center;
+        }
+        
+        /* Main content */
+        .content {
+            flex: 1;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            padding: 35px;
+        }
+        
+        .content h2 {
+            color: #2c3e50;
+            margin-bottom: 25px;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 12px;
+            font-size: 28px;
+        }
+        
+        .content p {
+            margin-bottom: 20px;
+            text-align: justify;
+            font-size: 16px;
+            color: #555;
+        }
+        
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+            padding: 40px;
+            border-radius: 12px;
+            margin-bottom: 35px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" fill="%23ffffff" opacity="0.1"><polygon points="1000,100 1000,0 0,100"/></svg>');
+            background-size: cover;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero-section h3 {
+            font-size: 32px;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+        
+        .hero-section p {
+            font-size: 18px;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        /* Mission Vision Section */
+        .mission-vision {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .mission-card, .vision-card {
+            background: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            border-top: 5px solid #3498db;
+            transition: transform 0.3s ease;
+        }
+        
+        .mission-card:hover, .vision-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .mission-card h3, .vision-card h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 22px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .mission-card h3 i, .vision-card h3 i {
+            margin-right: 10px;
+            color: #3498db;
+        }
+        
+        /* Values Section */
+        .values-section {
+            margin: 40px 0;
+        }
+        
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 25px;
+        }
+        
+        .value-card {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 10px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border-left: 4px solid #3498db;
+        }
+        
+        .value-card:hover {
+            background: #e9ecef;
+            transform: translateY(-3px);
+        }
+        
+        .value-icon {
+            font-size: 40px;
+            color: #3498db;
+            margin-bottom: 15px;
+        }
+        
+        .value-card h4 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+        
+        /* Stats Section */
+        .stats-section {
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            color: white;
+            padding: 40px;
+            border-radius: 12px;
+            margin: 40px 0;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            text-align: center;
+        }
+        
+        .stat-item h3 {
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #3498db;
+        }
+        
+        .stat-item p {
+            color :#bce4ff;
+            padding-left: 18%;
+            font-size: 16px;
+            opacity: 0.9;
+        }
+        
+        /* Facilities Section */
+        .facilities-section {
+            margin: 40px 0;
+        }
+        
+        .facilities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 25px;
+        }
+        
+        .facility-card {
+            background: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease;
+        }
+        
+        .facility-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .facility-icon {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+            padding: 25px;
+            text-align: center;
+            font-size: 50px;
+        }
+        
+        .facility-info {
+            padding: 20px;
+        }
+        
+        .facility-info h4 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+        
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            color: #ecf0f1;
+            text-align: center;
+            padding: 25px 0;
+            margin-top: auto;
+        }
+        
+        footer p {
+            margin: 0;
+            font-size: 15px;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
     .container {
-      display: flex;
-      max-width: 1200px;
-      margin: 40px auto;
-      gap: 30px;
-      padding: 0 20px;
-      flex: 1;
-      width: 100%;
+        flex-direction: column;
     }
-
+    
     .sidebar {
-      width: 280px;
-      background: #fff;
-      border-radius: 10px;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-      padding: 20px;
-      height: fit-content;
+        width: 100%;
+        position: static;
     }
-
-    .sidebar h3 {
-      font-size: 18px;
-      margin-bottom: 15px;
-      border-bottom: 2px solid #3498db;
-      padding-bottom: 8px;
+    
+    .home-btn {
+        position: static;
+        transform: none;
+        margin: 10px auto;
+        display: inline-flex;
+        justify-content: center;
+        background: rgba(255, 255, 255, 0.3);
     }
-
-    .sidebar ul {
-      list-style: none;
-      padding-left: 0;
+    
+    header {
+        padding: 15px 0;
     }
-
-    .sidebar li {
-      margin-bottom: 10px;
-    }
-
-    .sidebar a {
-      text-decoration: none;
-      color: #333;
-      display: block;
-      padding: 8px 12px;
-      border-radius: 6px;
-      transition: all 0.2s;
-    }
-
-    .sidebar a:hover,
-    .sidebar a.active {
-      background: #3498db;
-      color: white;
-    }
-
-    .content {
-      flex: 1;
-      background: #fff;
-      border-radius: 10px;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-      padding: 30px;
-    }
-
-    .content h2 {
-      color: #3498db;
-      margin-bottom: 20px;
-    }
-
-    .content p {
-      line-height: 1.7;
-      margin-bottom: 15px;
-      text-align: justify;
-    }
-
-    .content-section {
-      display: none;
-    }
-
-    .content-section.active {
-      display: block;
-    }
-
-    footer {
-      background-color: #31465a;
-      color: #fff;
-      text-align: center;
-      padding: 15px 0;
-    }
-  </style>
-
+}
+        
+        @media (max-width: 768px) {
+            .container {
+                margin: 20px auto;
+                gap: 20px;
+            }
+            
+            .content {
+                padding: 25px;
+            }
+            
+            .hero-section {
+                padding: 30px 20px;
+            }
+            
+            .hero-section h3 {
+                font-size: 26px;
+            }
+            
+            .mission-vision {
+                grid-template-columns: 1fr;
+            }
+            
+            .values-grid, .facilities-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            header h1 {
+                font-size: 20px;
+            }
+            
+            .content h2 {
+                font-size: 24px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .content {
+                padding: 20px;
+            }
+            
+            .hero-section {
+                padding: 25px 15px;
+            }
+            
+            .hero-section h3 {
+                font-size: 22px;
+            }
+            
+            .mission-card, .vision-card {
+                padding: 20px;
+            }
+            
+            .stats-section {
+                padding: 30px 20px;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .stat-item h3 {
+                font-size: 36px;
+            }
+        }
+    </style>
 </head>
 
 <body>
-  <header>
-    <div class="header-content">
-      <h1>TRƯỜNG THCS & THPT CHẤT LƯỢNG CAO</h1>
-      <div class="vetrangchu">
-        <a href="index.html" class="btn btn-outline">
-          <i class="fas fa-arrow-left"></i> Về Trang Chủ
+    <header>
+        <a href="index.html" class="home-btn">
+         <i class="fas fa-home"></i> Trang Chủ
         </a>
-      </div>
+        <h1>CÔNG TY CỔ PHẦN GIÁO DỤC EDU</h1>
+    </header>
+
+    <div class="container">
+        <!-- Menu bên trái -->
+        <aside class="sidebar">
+            <h3>Giới thiệu & Hỗ trợ</h3>
+            <ul>
+                <li>
+                    <a href="gioithieu.html" class="active"><i class="fas fa-info-circle"></i> Giới thiệu</a>
+                </li>
+                <li>
+                    <a href="thanhtich.html"><i class="fas fa-trophy"></i> Thành tích</a>
+                </li>
+                <li>
+                    <a href="bangiamhieu.html"><i class="fas fa-user-tie"></i> Ban lãnh đạo</a>
+                </li>
+                <li>
+                    <a href="lichsu.html"><i class="fas fa-history"></i> Lịch sử phát triển</a>
+                </li>
+                <li>
+                    <a href="huongdan.html"><i class="fas fa-book"></i> Hướng dẫn sử dụng</a>
+                </li>
+                <li>
+                    <a href="lienhe.html"><i class="fas fa-phone"></i> Liên hệ</a>
+                </li>
+                <li>
+                    <a href="cauhoi.html"><i class="fas fa-question-circle"></i> Câu hỏi thường gặp</a>
+                </li>
+                <li>
+                    <a href="gopy.html"><i class="fas fa-comment-dots"></i> Góp ý hệ thống</a>
+                </li>
+            </ul>
+        </aside>
+
+        <!-- Nội dung bên phải -->
+        <main class="content">
+            <div class="hero-section">
+                <div class="hero-content">
+                    <h3>Giới Thiệu Về Trang</h3>
+                    <p>Nơi ươm mầm tài năng - Kiến tạo tương lai</p>
+                </div>
+            </div>
+            
+            <h2>Trường THCS & THPT Chất Lượng Cao</h2>
+            <p>
+                Trang Web được thành lập với sứ mệnh mang đến một môi trường học tập hiện đại, sáng tạo, giúp học sinh phát triển toàn diện cả về tri thức và kỹ năng sống.
+            </p>
+            <p>
+                Với đội ngũ hỗ trợ tận tâm, tầm nhìn tiên tiến, chúng tôi luôn nỗ lực nâng cao chất lượng giảng dạy, hướng tới việc xây dựng một thế hệ học sinh tự tin, năng động và hội nhập.
+            </p>
+            <p>
+                Trong suốt quá trình phát triển, chúng tôi đã đạt nhiều thành tích xuất sắc, khẳng định vị thế là một trong những trang dẫn đầu tại địa phương.
+            </p>
+            
+            <div class="mission-vision">
+                <div class="mission-card">
+                    <h3><i class="fas fa-bullseye"></i> Sứ Mệnh</h3>
+                    <p>Đào tạo thế hệ học sinh phát triển toàn diện về tri thức, đạo đức và kỹ năng, trở thành công dân toàn cầu có trách nhiệm, sáng tạo và hội nhập quốc tế.</p>
+                </div>
+                <div class="vision-card">
+                    <h3><i class="fas fa-eye"></i> Tầm Nhìn</h3>
+                    <p>Trở thành trang chuẩn quốc tế, tiên phong trong đổi mới giáo dục, nơi mỗi học sinh được khai phóng tiềm năng và phát triển tối đa năng lực bản thân.</p>
+                </div>
+            </div>
+            
+            <div class="values-section">
+                <h2>Giá Trị Cốt Lõi</h2>
+                <div class="values-grid">
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h4>Chất Lượng</h4>
+                        <p>Cam kết dễ dàng sử dụng, đáp ứng chuẩn quốc tế</p>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <h4>Tận Tâm</h4>
+                        <p>Đội ngũ hỗ trợ tận tâm, yêu nghề, mến trẻ</p>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <h4>Sáng Tạo</h4>
+                        <p>Khuyến khích tư duy sáng tạo và đổi mới trong học tập</p>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <h4>Trách Nhiệm</h4>
+                        <p>Xây dựng ý thức trách nhiệm với bản thân và cộng đồng</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="stats-section">
+                <h2 style="text-align: center; color: white; margin-bottom: 30px;">Thành Tựu Nổi Bật</h2>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <h3>15+</h3>
+                        <p>Năm kinh nghiệm</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>200+</h3>
+                        <p>Nhà trường tin tưởng</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>150+</h3>
+                        <p>Nhân viên chất lượng</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>95%</h3>
+                        <p>Phủ sóng toàn quốc</p>
+                    </div>
+                </div>
+            </div>
+        </main>
     </div>
-  </header>
 
-  <div class="container">
-    <!-- Menu bên trái -->
-    <aside class="sidebar">
-      <h3>Giới thiệu & Hỗ trợ</h3>
-      <ul>
-        <li><a href="#" class="menu-item active" data-target="gioithieu"><i class="fas fa-info-circle"></i> Giới thiệu</a></li>
-        <li><a href="#" class="menu-item" data-target="thanhtich"><i class="fas fa-trophy"></i> Thành tích</a></li>
-        <li><a href="#" class="menu-item" data-target="bangiamhieu"><i class="fas fa-user-tie"></i> Ban giám hiệu</a></li>
-        <li><a href="#" class="menu-item" data-target="lichsu"><i class="fas fa-history"></i> Lịch sử phát triển</a></li>
-        <li><a href="#" class="menu-item" data-target="huongdan"><i class="fas fa-book"></i> Hướng dẫn sử dụng</a></li>
-        <li><a href="#" class="menu-item" data-target="lienhe"><i class="fas fa-phone"></i> Liên hệ</a></li>
-        <li><a href="#" class="menu-item" data-target="cauhoi"><i class="fas fa-question-circle"></i> Câu hỏi thường gặp</a></li>
-        <li><a href="#" class="menu-item" data-target="gopy"><i class="fas fa-comment-dots"></i> Góp ý hệ thống</a></li>
-      </ul>
-    </aside>
-
-    <!-- Khu vực nội dung -->
-    <main class="content">
-      <!-- Giới thiệu -->
-      <section id="gioithieu" class="content-section active">
-          <h2>Giới thiệu về Trường</h2>
-          <p>
-            Trường THCS & THPT Chất Lượng Cao được thành lập với sứ mệnh mang đến
-            một môi trường học tập hiện đại, sáng tạo, giúp học sinh phát triển
-            toàn diện cả về tri thức và kỹ năng sống.
-          </p>
-          <p>
-            Với đội ngũ giáo viên tận tâm, cơ sở vật chất tiên tiến, nhà trường
-            luôn nỗ lực nâng cao chất lượng giảng dạy, hướng tới việc xây dựng một
-            thế hệ học sinh tự tin, năng động và hội nhập.
-          </p>
-          <p>
-            Trong suốt quá trình phát triển, nhà trường đã đạt nhiều thành tích
-            xuất sắc, khẳng định vị thế là một trong những trường dẫn đầu về chất
-            lượng giáo dục tại địa phương.
-          </p>
-      </section>
-
-      <!-- Thành tích -->
-      <section id="thanhtich" class="content-section">
-        <h2>Thành tích nổi bật</h2>
+    <footer>
         <p>
-          Trong suốt quá trình hoạt động, nhà trường đã đạt được nhiều thành
-          tích xuất sắc trong học tập và phong trào thi đua.
+            &copy; 2024 Trường THCS & THPT Chất Lượng Cao. Tất cả quyền được bảo lưu.
         </p>
-        <p>
-          Các giải thưởng cấp thành phố, tỉnh, quốc gia là minh chứng cho sự nỗ
-          lực không ngừng của thầy và trò trường THCS & THPT Chất Lượng Cao.
-        </p>
-      </section>
-
-      <!-- Ban giám hiệu -->
-      <section id="bangiamhieu" class="content-section">
-        <h2>Ban giám hiệu nhà trường</h2>
-        <p>
-          Ban giám hiệu gồm những thầy cô có năng lực quản lý, giàu kinh nghiệm
-          và tâm huyết với sự nghiệp giáo dục.
-        </p>
-        <p>
-          Mỗi thành viên đều góp phần quan trọng trong việc định hướng và phát
-          triển chất lượng đào tạo của nhà trường.
-        </p>
-      </section>
-
-      <!-- Lịch sử -->
-      <section id="lichsu" class="content-section">
-        <h2>Lịch sử phát triển</h2>
-        <p>
-          Trường THCS & THPT Chất Lượng Cao được thành lập vào năm XXXX, trải
-          qua nhiều giai đoạn phát triển và đổi mới.
-        </p>
-        <p>
-          Từ những ngày đầu còn khó khăn, đến nay nhà trường đã trở thành một
-          trong những cơ sở giáo dục uy tín hàng đầu khu vực.
-        </p>
-      </section>
-
-      <!-- Hướng dẫn -->
-      <section id="huongdan" class="content-section">
-        <h2>Hướng dẫn sử dụng hệ thống</h2>
-        <p>
-          Hệ thống quản lý điểm được xây dựng nhằm hỗ trợ học sinh và giáo viên
-          theo dõi kết quả học tập một cách dễ dàng.
-        </p>
-        <p>
-          Người dùng có thể đăng nhập, xem điểm, và cập nhật thông tin cá nhân
-          qua giao diện thân thiện và trực quan.
-        </p>
-      </section>
-
-      <!-- Liên hệ -->
-      <section id="lienhe" class="content-section">
-        <h2>Liên hệ</h2>
-        <p>📍 Địa chỉ: Số 123, Đường Giáo Dục, Quận Trung Tâm, Thành phố ABC</p>
-        <p>📞 Điện thoại: (0123) 456 789</p>
-        <p>📧 Email: contact@truongclc.edu.vn</p>
-        <p>
-          Nhà trường luôn sẵn sàng tiếp nhận ý kiến đóng góp và hỗ trợ học sinh,
-          phụ huynh mọi lúc.
-        </p>
-      </section>
-
-      <!-- Câu hỏi -->
-      <section id="cauhoi" class="content-section">
-        <h2>Câu hỏi thường gặp</h2>
-        <p>
-          <b>1. Làm sao để xem điểm?</b><br />Đăng nhập vào hệ thống, chọn mục
-          “Kết quả học tập”.
-        </p>
-        <p>
-          <b>2. Tôi quên mật khẩu thì làm sao?</b><br />Bấm “Quên mật khẩu” trên
-          trang đăng nhập và làm theo hướng dẫn.
-        </p>
-      </section>
-
-      <!-- Góp ý -->
-      <section id="gopy" class="content-section">
-        <h2>Góp ý hệ thống</h2>
-        <p>
-          Chúng tôi luôn lắng nghe mọi ý kiến của học sinh, phụ huynh và giáo
-          viên để không ngừng hoàn thiện hệ thống.
-        </p>
-        <p>
-          Vui lòng gửi phản hồi về:
-          <a href="mailto:gopy@truongclc.edu.vn">gopy@truongclc.edu.vn</a>
-        </p>
-      </section>
-    </main>
-  </div>
-
-  <footer>
-    <p>&copy; 2024 Trường THCS & THPT Chất Lượng Cao. Tất cả quyền được bảo lưu.</p>
-  </footer>
-
-  <script>
-    // Xử lý khi bấm menu
-    const menuItems = document.querySelectorAll('.menu-item');
-    const sections = document.querySelectorAll('.content-section');
-
-    menuItems.forEach(item => {
-      item.addEventListener('click', e => {
-        e.preventDefault();
-        const targetId = item.getAttribute('data-target');
-
-        // Đổi màu active menu
-        menuItems.forEach(i => i.classList.remove('active'));
-        item.classList.add('active');
-
-        // Ẩn hết section, chỉ hiện cái được chọn
-        sections.forEach(sec => sec.classList.remove('active'));
-        document.getElementById(targetId).classList.add('active');
-
-        // Cập nhật URL thành #targetId
-        window.location.hash = targetId;
-      });
-    });
-
-    // Khi tải trang -> nếu có # trên URL thì mở đúng phần đó
-    window.addEventListener('load', () => {
-      const hash = window.location.hash.substring(1);
-      if (hash) {
-        const activeItem = document.querySelector(`.menu-item[data-target="${hash}"]`);
-        if (activeItem) activeItem.click();
-      }
-    });
-  </script>
-
+    </footer>
 </body>
 </html>

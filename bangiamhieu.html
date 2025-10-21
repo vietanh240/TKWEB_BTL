@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ban Lãnh Đạo - THCS & THPT Chất Lượng Cao</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reset và base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        
+        /* Header */
+header {
+    background: linear-gradient(135deg, #3498db, #2c3e50);
+    color: white;
+    padding: 18px 0;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    position: relative; /* THÊM DÒNG NÀY */
+}
+
+/* Nút trở về trang chủ */
+.home-btn {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+}
+
+.home-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-50%) scale(1.05);
+}
+
+        
+        header h1 {
+            margin: 0;
+            font-size: 24px;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+        
+        /* Container chính */
+        .container {
+            display: flex;
+            max-width: 1200px;
+            margin: 40px auto;
+            gap: 30px;
+            padding: 0 20px;
+            flex: 1;
+        }
+        
+        /* Sidebar */
+        .sidebar {
+            width: 280px;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            padding: 25px;
+            height: fit-content;
+            position: sticky;
+            top: 20px;
+        }
+        
+        .sidebar h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+            color: #2c3e50;
+        }
+        
+        .sidebar ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .sidebar li {
+            margin-bottom: 12px;
+        }
+        
+        .sidebar a {
+            text-decoration: none;
+            color: #444;
+            display: block;
+            padding: 10px 15px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+        
+        .sidebar a:hover {
+            background: #3498db;
+            color: white;
+            transform: translateX(5px);
+        }
+        
+        .sidebar a.active {
+            background: #3498db;
+            color: white;
+            box-shadow: 0 4px 8px rgba(52, 152, 219, 0.3);
+        }
+        
+        .sidebar i {
+            margin-right: 10px;
+            width: 20px;
+            text-align: center;
+        }
+        
+        /* Main content */
+        .content {
+            flex: 1;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            padding: 35px;
+        }
+        
+        .content h2 {
+            color: #2c3e50;
+            margin-bottom: 25px;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 12px;
+            font-size: 28px;
+        }
+        
+        .content p {
+            margin-bottom: 20px;
+            text-align: justify;
+            font-size: 16px;
+            color: #555;
+        }
+        
+        /* Phần giới thiệu ban giám hiệu */
+        .intro-section {
+            background: linear-gradient(to bottom right, #f8f9fa, #e9ecef);
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 35px;
+            border-left: 5px solid #3498db;
+        }
+        
+        .intro-section p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        
+        /* Danh sách thành viên ban giám hiệu */
+        .members-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .member-card {
+            background: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .member-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .member-img {
+            height: 280px;
+            background: linear-gradient(135deg, #3498db, #2c3e50);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 80px;
+        }
+        
+        .member-info {
+            padding: 25px;
+        }
+        
+        .member-name {
+            font-size: 22px;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 8px;
+        }
+        
+        .member-position {
+            color: #3498db;
+            font-weight: 600;
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+        
+        .member-qualification {
+            color: #666;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+        
+        .member-bio {
+            color: #555;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+        
+        .member-contact {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .contact-item i {
+            margin-right: 10px;
+            color: #3498db;
+            width: 16px;
+        }
+        
+        /* Timeline quá trình công tác */
+        .timeline-section {
+            margin-top: 50px;
+        }
+        
+        .timeline-title {
+            font-size: 24px;
+            color: #2c3e50;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+        
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background: #3498db;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -2px;
+        }
+        
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+        }
+        
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+        
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+        
+        .timeline-content {
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+            position: relative;
+        }
+        
+        .timeline-item:nth-child(odd) .timeline-content::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            right: -10px;
+            top: 20px;
+            background: #f8f9fa;
+            transform: rotate(45deg);
+            box-shadow: 3px -3px 5px rgba(0, 0, 0, 0.05);
+        }
+        
+        .timeline-item:nth-child(even) .timeline-content::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            left: -10px;
+            top: 20px;
+            background: #f8f9fa;
+            transform: rotate(45deg);
+            box-shadow: -3px 3px 5px rgba(0, 0, 0, 0.05);
+        }
+        
+        .timeline-year {
+            font-weight: 700;
+            color: #3498db;
+            margin-bottom: 8px;
+        }
+        
+        .timeline-desc {
+            color: #555;
+        }
+        
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            color: #ecf0f1;
+            text-align: center;
+            padding: 25px 0;
+            margin-top: auto;
+        }
+        
+        footer p {
+            margin: 0;
+            font-size: 15px;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .container {
+                flex-direction: column;
+            }
+            
+            .sidebar {
+                width: 100%;
+                position: static;
+            }
+            .home-btn {
+        position: static;
+        transform: none;
+        margin: 10px auto;
+        display: inline-flex;
+        justify-content: center;
+        background: rgba(255, 255, 255, 0.3);
+    }
+    
+    header {
+        padding: 15px 0;
+    }
+
+            
+            .timeline::after {
+                left: 31px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .timeline-item:nth-child(even) {
+                left: 0;
+            }
+            
+            .timeline-item:nth-child(odd) .timeline-content::after,
+            .timeline-item:nth-child(even) .timeline-content::after {
+                left: -10px;
+                right: auto;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                margin: 20px auto;
+                gap: 20px;
+            }
+            
+            .content {
+                padding: 25px;
+            }
+            
+            .members-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            header h1 {
+                font-size: 20px;
+            }
+            
+            .content h2 {
+                font-size: 24px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .content {
+                padding: 20px;
+            }
+            
+            .intro-section {
+                padding: 20px;
+            }
+            
+            .member-info {
+                padding: 20px;
+            }
+            
+            .member-img {
+                height: 220px;
+                font-size: 60px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <a href="index.html" class="home-btn">
+  <i class="fas fa-home"></i> Trang Chủ
+</a>
+        <h1>CÔNG TY CỔ PHẦN GIÁO DỤC EDU</h1>
+    </header>
+
+    <div class="container">
+        <!-- Menu bên trái -->
+        <aside class="sidebar">
+            <h3>Giới thiệu & Hỗ trợ</h3>
+            <ul>
+                <li>
+                    <a href="gioithieu.html"><i class="fas fa-info-circle"></i> Giới thiệu</a>
+                </li>
+                <li>
+                    <a href="thanhtich.html"><i class="fas fa-trophy"></i> Thành tích</a>
+                </li>
+                <li>
+                    <a href="bangiamhieu.html" class="active"><i class="fas fa-user-tie"></i> Ban lãnh đạo</a>
+                </li>
+                <li>
+                    <a href="lichsu.html"><i class="fas fa-history"></i> Lịch sử phát triển</a>
+                </li>
+                <li>
+                    <a href="huongdan.html"><i class="fas fa-book"></i> Hướng dẫn sử dụng</a>
+                </li>
+                <li>
+                    <a href="lienhe.html"><i class="fas fa-phone"></i> Liên hệ</a>
+                </li>
+                <li>
+                    <a href="cauhoi.html"><i class="fas fa-question-circle"></i> Câu hỏi thường gặp</a>
+                </li>
+                <li>
+                    <a href="gopy.html"><i class="fas fa-comment-dots"></i> Góp ý hệ thống</a>
+                </li>
+            </ul>
+        </aside>
+
+        <!-- Nội dung bên phải -->
+        <main class="content">
+            <h2>Ban Giám Hiệu Nhà Trường</h2>
+            
+            <div class="intro-section">
+                <p>Ban giám hiệu Trường THCS & THPT Chất Lượng Cao gồm những nhà giáo có năng lực quản lý, giàu kinh nghiệm và tâm huyết với sự nghiệp giáo dục. Mỗi thành viên đều góp phần quan trọng trong việc định hướng và phát triển chất lượng đào tạo của nhà trường.</p>
+                <p>Với tầm nhìn chiến lược và sự lãnh đạo sáng suốt, Ban giám hiệu đã và đang đưa nhà trường trở thành một trong những cơ sở giáo dục uy tín hàng đầu, đào tạo nên những thế hệ học sinh ưu tú, có đầy đủ phẩm chất và năng lực để thành công trong tương lai.</p>
+            </div>
+            
+            <div class="members-grid">
+                <div class="member-card">
+                    <div class="member-img">
+                        <i class="fas fa-user-graduate"></i>
+                    </div>
+                    <div class="member-info">
+                        <div class="member-name">TS. Nguyễn Văn A</div>
+                        <div class="member-position">Tổng Giám Đốc</div>
+                        <div class="member-qualification">Tiến sĩ Quản lý Giáo dục - Đại học Sư phạm Hà Nội</div>
+                        <div class="member-bio">Với hơn 20 năm kinh nghiệm trong lĩnh vực giáo dục, thầy đã có nhiều đóng góp quan trọng trong việc nâng cao chất lượng dạy và học tại nhà trường.</div>
+                        <div class="member-contact">
+                            <div class="contact-item">
+                                <i class="fas fa-envelope"></i>
+                                <span>ht.nguyenvana@truongclc.edu.vn</span>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-phone"></i>
+                                <span>(0123) 456 789</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="member-card">
+                    <div class="member-img">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                    </div>
+                    <div class="member-info">
+                        <div class="member-name">ThS. Trần Thị B</div>
+                        <div class="member-position">Phó Giám ĐÓc</div>
+                        <div class="member-qualification">Thạc sĩ Quản lý Giáo dục - Đại học Quốc gia Hà Nội</div>
+                        <div class="member-bio">Cô có hơn 15 năm kinh nghiệm giảng dạy và quản lý giáo dục. Là tác giả của nhiều công trình nghiên cứu về đổi mới phương pháp giảng dạy.</div>
+                        <div class="member-contact">
+                            <div class="contact-item">
+                                <i class="fas fa-envelope"></i>
+                                <span>pht.tranthib@truongclc.edu.vn</span>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-phone"></i>
+                                <span>(0123) 456 790</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="member-card">
+                    <div class="member-img">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <div class="member-info">
+                        <div class="member-name">ThS. Lê Văn C</div>
+                        <div class="member-position">Phó Giám Đốc</div>
+                        <div class="member-qualification">Thạc sĩ Công nghệ Giáo dục - Đại học Bách Khoa Hà Nội</div>
+                        <div class="member-bio">Thầy chuyên phụ trách mảng công nghệ thông tin và cơ sở vật chất của nhà trường. Đã triển khai nhiều ứng dụng công nghệ vào quản lý và giảng dạy.</div>
+                        <div class="member-contact">
+                            <div class="contact-item">
+                                <i class="fas fa-envelope"></i>
+                                <span>pht.levanc@truongclc.edu.vn</span>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-phone"></i>
+                                <span>(0123) 456 791</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="timeline-section">
+                <h3 class="timeline-title">Hành Trình Phát Triển Của Ban Giám Hiệu</h3>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <div class="timeline-year">2020 - Hiện tại</div>
+                            <div class="timeline-desc">Tiếp tục lãnh đạo nhà trường đạt nhiều thành tích xuất sắc, mở rộng hợp tác quốc tế và ứng dụng công nghệ 4.0 vào giáo dục.</div>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <div class="timeline-year">2015 - 2020</div>
+                            <div class="timeline-desc">Ban giám hiệu mới được bổ nhiệm, tập trung vào đổi mới phương pháp giảng dạy và nâng cao chất lượng giáo dục toàn diện.</div>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <div class="timeline-year">2010 - 2015</div>
+                            <div class="timeline-desc">Xây dựng và phát triển đội ngũ giáo viên chất lượng cao, đầu tư cơ sở vật chất hiện đại phục vụ giảng dạy và học tập.</div>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <div class="timeline-year">2005 - 2010</div>
+                            <div class="timeline-desc">Thành lập Ban giám hiệu đầu tiên, xây dựng nền tảng giáo dục chất lượng cao với định hướng phát triển bền vững.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <footer>
+        <p>
+            &copy; 2024 Trường THCS & THPT Chất Lượng Cao. Tất cả quyền được bảo lưu.
+        </p>
+    </footer>
+</body>
+</html>

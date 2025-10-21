@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQs - Câu hỏi thường gặp</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reset và base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #3498db, #2c3e50);
+            color: white;
+            padding: 18px 0;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        
+        /* Nút trở về trang chủ */
+        .home-btn {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+        }
+        
+        .home-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-50%) scale(1.05);
+        }
+        
+        header h1 {
+            margin: 0;
+            font-size: 24px;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+        
+        /* Container chính */
+        .container {
+            display: flex;
+            max-width: 1200px;
+            margin: 40px auto;
+            gap: 30px;
+            padding: 0 20px;
+            flex: 1;
+        }
+        
+        /* Sidebar */
+        .sidebar {
+            width: 280px;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            padding: 25px;
+            height: fit-content;
+            position: sticky;
+            top: 20px;
+        }
+        
+        .sidebar h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+            color: #2c3e50;
+        }
+        
+        .sidebar ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .sidebar li {
+            margin-bottom: 12px;
+        }
+        
+        .sidebar a {
+            text-decoration: none;
+            color: #444;
+            display: block;
+            padding: 10px 15px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+        
+        .sidebar a:hover {
+            background: #3498db;
+            color: white;
+            transform: translateX(5px);
+        }
+        
+        .sidebar a.active {
+            background: #3498db;
+            color: white;
+            box-shadow: 0 4px 8px rgba(52, 152, 219, 0.3);
+        }
+        
+        .sidebar i {
+            margin-right: 10px;
+            width: 20px;
+            text-align: center;
+        }
+        
+        /* Main content */
+        .content {
+            flex: 1;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            padding: 35px;
+        }
+        
+        .content h2 {
+            color: #2c3e50;
+            margin-bottom: 25px;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 12px;
+            font-size: 28px;
+        }
+        
+        .content p {
+            margin-bottom: 20px;
+            text-align: justify;
+            font-size: 16px;
+            color: #555;
+        }
+        
+        /* Phần giới thiệu */
+        .intro-section {
+            background: linear-gradient(to bottom right, #f8f9fa, #e9ecef);
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 35px;
+            border-left: 5px solid #3498db;
+        }
+        
+        .intro-section p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        
+        /* FAQ Items */
+        .faq-container {
+            margin-top: 30px;
+        }
+        
+        .faq-item {
+            background: #fff;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+            border: 1px solid #f0f0f0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-item:hover {
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.12);
+        }
+        
+        .faq-question {
+            padding: 20px 25px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #fff;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-question:hover {
+            background: #f8f9fa;
+        }
+        
+        .faq-question h3 {
+            font-size: 18px;
+            font-weight: 600;
+            color: #2c3e50;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .faq-question .question-number {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        
+        .faq-question .question-text {
+            flex: 1;
+        }
+        
+        .faq-question .toggle-icon {
+            color: #3498db;
+            font-size: 16px;
+            transition: transform 0.3s ease;
+        }
+        
+        .faq-item.active .toggle-icon {
+            transform: rotate(180deg);
+        }
+        
+        .faq-answer {
+            padding: 0 25px;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            background: #f8f9fa;
+        }
+        
+        .faq-item.active .faq-answer {
+            padding: 0 25px 25px;
+            max-height: 500px;
+        }
+        
+        .faq-answer p {
+            margin: 0;
+            color: #555;
+            line-height: 1.7;
+            font-size: 15px;
+        }
+        
+        .faq-answer ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+        
+        .faq-answer li {
+            margin-bottom: 8px;
+            color: #555;
+        }
+        
+        .contact-highlight {
+            background: linear-gradient(to right, #eef7fe, #e3f2fd);
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            border-left: 4px solid #3498db;
+        }
+        
+        .contact-highlight strong {
+            color: #2c3e50;
+        }
+        
+        /* Search box */
+        .search-box {
+            margin-bottom: 30px;
+        }
+        
+        .search-container {
+            position: relative;
+            max-width: 500px;
+        }
+        
+        .search-input {
+            width: 100%;
+            padding: 15px 50px 15px 20px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            background: #fff;
+        }
+        
+        .search-input:focus {
+            border-color: #3498db;
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+            outline: none;
+        }
+        
+        .search-icon {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #7f8c8d;
+            font-size: 18px;
+        }
+        
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            color: #ecf0f1;
+            text-align: center;
+            padding: 25px 0;
+            margin-top: auto;
+        }
+        
+        footer p {
+            margin: 0;
+            font-size: 15px;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .container {
+                flex-direction: column;
+            }
+            
+            .sidebar {
+                width: 100%;
+                position: static;
+            }
+            
+            .home-btn {
+                position: static;
+                transform: none;
+                margin: 10px auto;
+                display: inline-flex;
+                justify-content: center;
+                background: rgba(255, 255, 255, 0.3);
+            }
+            
+            header {
+                padding: 15px 0;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                margin: 20px auto;
+                gap: 20px;
+            }
+            
+            .content {
+                padding: 25px;
+            }
+            
+            .faq-question {
+                padding: 15px 20px;
+            }
+            
+            .faq-question h3 {
+                font-size: 16px;
+            }
+            
+            header h1 {
+                font-size: 20px;
+            }
+            
+            .content h2 {
+                font-size: 24px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .content {
+                padding: 20px;
+            }
+            
+            .intro-section {
+                padding: 20px;
+            }
+            
+            .faq-question {
+                padding: 15px;
+            }
+            
+            .faq-question h3 {
+                font-size: 15px;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+            }
+            
+            .faq-item.active .faq-answer {
+                padding: 0 15px 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <a href="index.html" class="home-btn">
+            <i class="fas fa-home"></i> Trang Chủ
+        </a>
+        <h1>CÔNG TY CỔ PHẦN GIÁO DỤC EDU</h1>
+    </header>
+
+    <div class="container">
+        <!-- Menu bên trái -->
+        <aside class="sidebar">
+            <h3>Danh Mục Hỗ Trợ & Tài Nguyên</h3>
+            <ul>
+                <li>
+                    <a href="nhapdiem.html"><i class="fas fa-keyboard"></i> Hướng dẫn nhập điểm</a>
+                </li>
+                <li>
+                    <a href="quyche.html"><i class="fas fa-scroll"></i> Quy chế đánh giá</a>
+                </li>
+                <li>
+                    <a href="mau.html"><i class="fas fa-file-alt"></i> Mẫu báo cáo</a>
+                </li>
+                <li>
+                    <a href="lienhekythuat.html"><i class="fas fa-headset"></i> Liên hệ kỹ thuật</a>
+                </li>
+                <li>
+                    <a href="bieumau.html"><i class="fas fa-clipboard-list"></i> Biểu mẫu đánh giá</a>
+                </li>
+                <li>
+                    <a href="quydinh.html"><i class="fas fa-balance-scale"></i> Quy định điểm số</a>
+                </li>
+                <li>
+                    <a href="template.html"><i class="fas fa-file-code"></i> Template báo cáo</a>
+                </li>
+                <li>
+                    <a href="faqs.html" class="active"><i class="fas fa-question-circle"></i> FAQs</a>
+                </li>
+            </ul>
+        </aside>
+
+        <!-- Nội dung bên phải -->
+        <main class="content">
+            <h2>FAQs - Câu Hỏi Thường Gặp</h2>
+            
+            <div class="intro-section">
+                <p>Tìm kiếm câu trả lời cho các thắc mắc thường gặp về hệ thống quản lý điểm. Nếu không tìm thấy câu trả lời bạn cần, vui lòng liên hệ với bộ phận hỗ trợ kỹ thuật.</p>
+            </div>
+            
+            <div class="search-box">
+                <div class="search-container">
+                    <input type="text" class="search-input" placeholder="Tìm kiếm câu hỏi...">
+                    <i class="fas fa-search search-icon"></i>
+                </div>
+            </div>
+            
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>
+                            <span class="question-number">1</span>
+                            <span class="question-text">Làm thế nào để nhập điểm cho học sinh?</span>
+                        </h3>
+                        <i class="fas fa-chevron-down toggle-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Giáo viên có thể nhập điểm theo các bước sau:</p>
+                        <ul>
+                            <li>Đăng nhập vào hệ thống quản lý điểm</li>
+                            <li>Chọn lớp và môn học cần nhập điểm</li>
+                            <li>Chọn loại điểm (miệng, 15 phút, 1 tiết, học kỳ)</li>
+                            <li>Nhập điểm cho từng học sinh và lưu lại</li>
+                        </ul>
+                        <p>Chi tiết hướng dẫn có tại mục <strong>"Hướng dẫn nhập điểm"</strong> với video minh họa cụ thể.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>
+                            <span class="question-number">2</span>
+                            <span class="question-text">Tôi quên mật khẩu thì phải làm sao?</span>
+                        </h3>
+                        <i class="fas fa-chevron-down toggle-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Nếu quên mật khẩu, bạn có thể:</p>
+                        <ul>
+                            <li>Nhấn vào liên kết <strong>"Quên mật khẩu"</strong> tại trang đăng nhập</li>
+                            <li>Nhập địa chỉ email đã đăng ký tài khoản</li>
+                            <li>Làm theo hướng dẫn trong email để đặt lại mật khẩu</li>
+                        </ul>
+                        <p>Nếu không nhận được email, vui lòng kiểm tra thư mục spam hoặc liên hệ bộ phận kỹ thuật.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>
+                            <span class="question-number">3</span>
+                            <span class="question-text">Có thể xuất báo cáo ra Excel không?</span>
+                        </h3>
+                        <i class="fas fa-chevron-down toggle-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Có, hệ thống hỗ trợ xuất báo cáo ra nhiều định dạng:</p>
+                        <ul>
+                            <li><strong>Excel (.xlsx)</strong> - Để phân tích và chỉnh sửa dữ liệu</li>
+                            <li><strong>PDF</strong> - Để in ấn và chia sẻ</li>
+                            <li><strong>Word (.docx)</strong> - Để báo cáo chi tiết</li>
+                        </ul>
+                        <p>Truy cập mục <strong>"Mẫu báo cáo"</strong> và chọn nút "Xuất Excel" hoặc các định dạng khác để tải file.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>
+                            <span class="question-number">4</span>
+                            <span class="question-text">Làm thế nào để sửa điểm đã nhập?</span>
+                        </h3>
+                        <i class="fas fa-chevron-down toggle-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Để sửa điểm đã nhập:</p>
+                        <ul>
+                            <li>Truy cập bảng điểm của lớp và môn học tương ứng</li>
+                            <li>Nhấp vào ô điểm cần sửa</li>
+                            <li>Nhập điểm mới và nhấn Enter hoặc nút Lưu</li>
+                            <li>Hệ thống sẽ tự động ghi nhận lịch sử thay đổi</li>
+                        </ul>
+                        <p class="contact-highlight">
+                            <strong>Lưu ý:</strong> Mọi thay đổi điểm sau thời hạn quy định cần có sự phê duyệt của tổ trưởng chuyên môn.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>
+                            <span class="question-number">5</span>
+                            <span class="question-text">Liên hệ hỗ trợ kỹ thuật ở đâu?</span>
+                        </h3>
+                        <i class="fas fa-chevron-down toggle-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Bạn có thể liên hệ hỗ trợ kỹ thuật qua các kênh sau:</p>
+                        <ul>
+                            <li><strong>Email:</strong> hotrokythuat@truongclc.edu.vn</li>
+                            <li><strong>Điện thoại:</strong> (024) 1234 5678 - Máy lẻ 102</li>
+                            <li><strong>Giờ làm việc:</strong> Thứ 2 - Thứ 6: 7:30 - 17:00</li>
+                            <li><strong>Trực tiếp:</strong> Phòng Công nghệ thông tin - Tầng 3</li>
+                        </ul>
+                        <p>Truy cập mục <strong>"Liên hệ kỹ thuật"</strong> để gửi yêu cầu hỗ trợ trực tuyến.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>
+                            <span class="question-number">6</span>
+                            <span class="question-text">Làm thế nào để in bảng điểm lớp?</span>
+                        </h3>
+                        <i class="fas fa-chevron-down toggle-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Để in bảng điểm lớp:</p>
+                        <ul>
+                            <li>Chọn lớp cần in bảng điểm từ danh sách</li>
+                            <li>Nhấn nút <strong>"Xem bảng điểm"</strong></li>
+                            <li>Chọn <strong>"In bảng điểm"</strong> từ menu tùy chọn</li>
+                            <li>Hệ thống sẽ tạo file PDF và mở hộp thoại in</li>
+                        </ul>
+                        <p>Bạn cũng có thể tải template báo cáo từ mục <strong>"Template báo cáo"</strong> và tùy chỉnh theo nhu cầu.</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <footer>
+        <p>
+            &copy; 2024 Trường THCS & THPT Chất Lượng Cao. Tất cả quyền được bảo lưu.
+        </p>
+    </footer>
+
+    <script>
+        // Hiệu ứng toggle cho FAQ
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const faqItem = question.parentElement;
+                const isActive = faqItem.classList.contains('active');
+                
+                // Đóng tất cả các FAQ khác
+                document.querySelectorAll('.faq-item').forEach(item => {
+                    item.classList.remove('active');
+                });
+                
+                // Mở FAQ hiện tại nếu chưa mở
+                if (!isActive) {
+                    faqItem.classList.add('active');
+                }
+            });
+        });
+        
+        // Tìm kiếm FAQ
+        const searchInput = document.querySelector('.search-input');
+        const faqItems = document.querySelectorAll('.faq-item');
+        
+        searchInput.addEventListener('input', function() {
+            const searchTerm = this.value.toLowerCase();
+            
+            faqItems.forEach(item => {
+                const question = item.querySelector('.question-text').textContent.toLowerCase();
+                const answer = item.querySelector('.faq-answer').textContent.toLowerCase();
+                
+                if (question.includes(searchTerm) || answer.includes(searchTerm)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        });
+        
+        // Mở FAQ đầu tiên mặc định
+        document.querySelector('.faq-item').classList.add('active');
+    </script>
+</body>
+</html>

@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lịch Sử Phát Triển - Công Ty Giáo Dục EDU</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reset và base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        
+       header {
+    background: linear-gradient(135deg, #3498db, #2c3e50);
+    color: white;
+    padding: 18px 0;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    position: relative; /* THÊM DÒNG NÀY */
+}
+
+/* Nút trở về trang chủ */
+.home-btn {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+}
+
+.home-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-50%) scale(1.05);
+}
+
+        
+        header h1 {
+            margin: 0;
+            font-size: 24px;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+        
+        /* Container chính */
+        .container {
+            display: flex;
+            max-width: 1200px;
+            margin: 40px auto;
+            gap: 30px;
+            padding: 0 20px;
+            flex: 1;
+        }
+        
+        /* Sidebar */
+        .sidebar {
+            width: 280px;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            padding: 25px;
+            height: fit-content;
+            position: sticky;
+            top: 20px;
+        }
+        
+        .sidebar h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+            color: #2c3e50;
+        }
+        
+        .sidebar ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .sidebar li {
+            margin-bottom: 12px;
+        }
+        
+        .sidebar a {
+            text-decoration: none;
+            color: #444;
+            display: block;
+            padding: 10px 15px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+        
+        .sidebar a:hover {
+            background: #3498db;
+            color: white;
+            transform: translateX(5px);
+        }
+        
+        .sidebar a.active {
+            background: #3498db;
+            color: white;
+            box-shadow: 0 4px 8px rgba(52, 152, 219, 0.3);
+        }
+        
+        .sidebar i {
+            margin-right: 10px;
+            width: 20px;
+            text-align: center;
+        }
+        
+        /* Main content */
+        .content {
+            flex: 1;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            padding: 35px;
+        }
+        
+        .content h2 {
+            color: #2c3e50;
+            margin-bottom: 25px;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 12px;
+            font-size: 28px;
+        }
+        
+        .content p {
+            margin-bottom: 20px;
+            text-align: justify;
+            font-size: 16px;
+            color: #555;
+        }
+        
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+            padding: 40px;
+            border-radius: 12px;
+            margin-bottom: 35px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" fill="%23ffffff" opacity="0.1"><polygon points="1000,100 1000,0 0,100"/></svg>');
+            background-size: cover;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero-section h3 {
+            font-size: 32px;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+        
+        .hero-section p {
+            font-size: 18px;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        /* Milestone Section */
+        .milestone-section {
+            margin: 40px 0;
+        }
+        
+        .milestone-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 25px;
+        }
+        
+        .milestone-card {
+            background: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease;
+            border-left: 4px solid #3498db;
+        }
+        
+        .milestone-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .milestone-header {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .milestone-year {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+        
+        .milestone-title {
+            font-size: 18px;
+            opacity: 0.9;
+        }
+        
+        .milestone-body {
+            padding: 20px;
+        }
+        
+        .milestone-description {
+            color: #555;
+            margin-bottom: 15px;
+        }
+        
+        .milestone-achievements {
+            color: #3498db;
+            font-weight: 600;
+        }
+        
+        /* Timeline Section */
+        .timeline-section {
+            margin: 50px 0;
+        }
+        
+        .timeline-title {
+            font-size: 24px;
+            color: #2c3e50;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+        
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background: #3498db;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -2px;
+        }
+        
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+        }
+        
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+        
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+        
+        .timeline-content {
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+            position: relative;
+        }
+        
+        .timeline-item:nth-child(odd) .timeline-content::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            right: -10px;
+            top: 20px;
+            background: #f8f9fa;
+            transform: rotate(45deg);
+            box-shadow: 3px -3px 5px rgba(0, 0, 0, 0.05);
+        }
+        
+        .timeline-item:nth-child(even) .timeline-content::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            left: -10px;
+            top: 20px;
+            background: #f8f9fa;
+            transform: rotate(45deg);
+            box-shadow: -3px 3px 5px rgba(0, 0, 0, 0.05);
+        }
+        
+        .timeline-year {
+            font-weight: 700;
+            color: #3498db;
+            margin-bottom: 8px;
+            font-size: 18px;
+        }
+        
+        .timeline-desc {
+            color: #555;
+        }
+        
+        /* Growth Stats Section */
+        .growth-section {
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            color: white;
+            padding: 40px;
+            border-radius: 12px;
+            margin: 40px 0;
+        }
+        
+        .growth-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            text-align: center;
+        }
+        
+        .growth-item h3 {
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #3498db;
+        }
+        
+        .growth-item p {
+                color: #bce4ff;
+                padding-left: 18%;
+                font-size: 16px;
+                opacity: 0.9;
+        }
+        
+        /* Team Evolution Section */
+        .team-section {
+            margin: 40px 0;
+        }
+        
+        .team-evolution {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 25px;
+        }
+        
+        .team-card {
+            background: #fff;
+            padding: 25px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease;
+            border-top: 4px solid #3498db;
+        }
+        
+        .team-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .team-icon {
+            font-size: 45px;
+            color: #3498db;
+            margin-bottom: 15px;
+        }
+        
+        .team-period {
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+        
+        .team-size {
+            color: #3498db;
+            font-weight: 700;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        
+        .team-desc {
+            color: #666;
+            font-size: 14px;
+        }
+        
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            color: #ecf0f1;
+            text-align: center;
+            padding: 25px 0;
+            margin-top: auto;
+        }
+        
+        footer p {
+            margin: 0;
+            font-size: 15px;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .container {
+                flex-direction: column;
+            }
+            
+            .sidebar {
+                width: 100%;
+                position: static;
+            }
+            .home-btn {
+        position: static;
+        transform: none;
+        margin: 10px auto;
+        display: inline-flex;
+        justify-content: center;
+        background: rgba(255, 255, 255, 0.3);
+    }
+    
+    header {
+        padding: 15px 0;
+    }
+
+            
+            .timeline::after {
+                left: 31px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .timeline-item:nth-child(even) {
+                left: 0;
+            }
+            
+            .timeline-item:nth-child(odd) .timeline-content::after,
+            .timeline-item:nth-child(even) .timeline-content::after {
+                left: -10px;
+                right: auto;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                margin: 20px auto;
+                gap: 20px;
+            }
+            
+            .content {
+                padding: 25px;
+            }
+            
+            .hero-section {
+                padding: 30px 20px;
+            }
+            
+            .hero-section h3 {
+                font-size: 26px;
+            }
+            
+            .milestone-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .growth-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .team-evolution {
+                grid-template-columns: 1fr;
+            }
+            
+            header h1 {
+                font-size: 20px;
+            }
+            
+            .content h2 {
+                font-size: 24px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .content {
+                padding: 20px;
+            }
+            
+            .hero-section {
+                padding: 25px 15px;
+            }
+            
+            .hero-section h3 {
+                font-size: 22px;
+            }
+            
+            .growth-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .growth-item h3 {
+                font-size: 36px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <a href="index.html" class="home-btn">
+  <i class="fas fa-home"></i> Trang Chủ
+</a>
+        <h1>CÔNG TY CỔ PHẦN GIÁO DỤC EDU</h1>
+    </header>
+
+    <div class="container">
+        <!-- Menu bên trái -->
+        <aside class="sidebar">
+            <h3>Giới thiệu & Hỗ trợ</h3>
+            <ul>
+                <li>
+                    <a href="gioithieu.html"><i class="fas fa-info-circle"></i> Giới thiệu</a>
+                </li>
+                <li>
+                    <a href="thanhtich.html"><i class="fas fa-trophy"></i> Thành tích</a>
+                </li>
+                <li>
+                    <a href="bangiamhieu.html"><i class="fas fa-user-tie"></i> Ban lãnh đạo</a>
+                </li>
+                <li>
+                    <a href="lichsu.html" class="active"><i class="fas fa-history"></i> Lịch sử phát triển</a>
+                </li>
+                <li>
+                    <a href="huongdan.html"><i class="fas fa-book"></i> Hướng dẫn sử dụng</a>
+                </li>
+                <li>
+                    <a href="lienhe.html"><i class="fas fa-phone"></i> Liên hệ</a>
+                </li>
+                <li>
+                    <a href="cauhoi.html"><i class="fas fa-question-circle"></i> Câu hỏi thường gặp</a>
+                </li>
+                <li>
+                    <a href="gopy.html"><i class="fas fa-comment-dots"></i> Góp ý hệ thống</a>
+                </li>
+            </ul>
+        </aside>
+
+        <!-- Nội dung bên phải -->
+        <main class="content">
+            <div class="hero-section">
+                <div class="hero-content">
+                    <h3>Hành Trình Phát Triển</h3>
+                    <p>Từ startup công nghệ đến doanh nghiệp giáo dục hàng đầu</p>
+                </div>
+            </div>
+            
+            <h2>Lịch Sử Hình Thành & Phát Triển</h2>
+            <p>
+                Công ty Cổ phần Giáo dục EDU được thành lập năm 2016 với sứ mệnh cách mạng hóa giáo dục thông qua công nghệ. Từ một nhóm nhỏ các nhà sáng lập đam mê giáo dục, chúng tôi đã phát triển thành doanh nghiệp công nghệ giáo dục hàng đầu Việt Nam.
+            </p>
+            <p>
+                Hành trình 8 năm qua là minh chứng cho sự kiên trì, đổi mới và cam kết mang đến những giải pháp giáo dục tốt nhất cho cộng đồng.
+            </p>
+            
+            <div class="milestone-section">
+                <h2>Các Mốc Quan Trọng</h2>
+                <div class="milestone-grid">
+                    <div class="milestone-card">
+                        <div class="milestone-header">
+                            <div class="milestone-year">2016</div>
+                            <div class="milestone-title">Thành Lập</div>
+                        </div>
+                        <div class="milestone-body">
+                            <div class="milestone-description">
+                                Thành lập với 5 thành viên sáng lập, văn phòng đầu tiên tại Hà Nội với diện tích 50m².
+                            </div>
+                            <div class="milestone-achievements">
+                                • Ra mắt sản phẩm đầu tiên: Hệ thống quản lý học tập cơ bản
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="milestone-card">
+                        <div class="milestone-header">
+                            <div class="milestone-year">2018</div>
+                            <div class="milestone-title">Tăng Trưởng</div>
+                        </div>
+                        <div class="milestone-body">
+                            <div class="milestone-description">
+                                Mở rộng quy mô lên 25 nhân sự, triển khai thành công 15 dự án giáo dục đầu tiên.
+                            </div>
+                            <div class="milestone-achievements">
+                                • Nhận giải thưởng Startup công nghệ giáo dục tiềm năng
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="milestone-card">
+                        <div class="milestone-header">
+                            <div class="milestone-year">2020</div>
+                            <div class="milestone-title">Bứt Phá</div>
+                        </div>
+                        <div class="milestone-body">
+                            <div class="milestone-description">
+                                Mở văn phòng tại TP.HCM, đội ngũ phát triển lên 50 người, phục vụ 30+ khách hàng.
+                            </div>
+                            <div class="milestone-achievements">
+                                • Đón nhận đầu tư Series A từ quỹ Venture Capital
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="timeline-section">
+                <h3 class="timeline-title">Dòng Thời Gian Phát Triển</h3>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <div class="timeline-year">2023</div>
+                            <div class="timeline-desc">Mở rộng thị trường ra khu vực Đông Nam Á, ra mắt nền tảng học tập AI</div>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <div class="timeline-year">2022</div>
+                            <div class="timeline-desc">Đạt doanh thu 50 tỷ đồng, nhận giải Sao Khuê cho sản phẩm công nghệ giáo dục</div>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <div class="timeline-year">2021</div>
+                            <div class="timeline-desc">Phát triển đội ngũ lên 80 nhân sự, triển khai thành công 50+ dự án</div>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <div class="timeline-year">2019</div>
+                            <div class="timeline-desc">Ra mắt nền tảng LMS phiên bản 2.0, ký hợp tác với 10 trường đại học</div>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <div class="timeline-year">2017</div>
+                            <div class="timeline-desc">Ký hợp đồng đầu tiên với trường đại học, phát triển đội ngũ lên 15 người</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="growth-section">
+                <h2 style="text-align: center; color: white; margin-bottom: 30px;">Tăng Trưởng Qua Các Năm</h2>
+                <div class="growth-grid">
+                    <div class="growth-item">
+                        <h3>8</h3>
+                        <p>Năm hoạt động</p>
+                    </div>
+                    <div class="growth-item">
+                        <h3>80+</h3>
+                        <p>Nhân sự hiện tại</p>
+                    </div>
+                    <div class="growth-item">
+                        <h3>150+</h3>
+                        <p>Dự án triển khai</p>
+                    </div>
+                    <div class="growth-item">
+                        <h3>50+</h3>
+                        <p>Đối tác giáo dục</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="team-section">
+                <h2>Sự Phát Triển Của Đội Ngũ</h2>
+                <div class="team-evolution">
+                    <div class="team-card">
+                        <div class="team-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="team-period">2016</div>
+                        <div class="team-size">5 người</div>
+                        <div class="team-desc">Đội ngũ sáng lập với 5 thành viên đam mê công nghệ giáo dục</div>
+                    </div>
+                    <div class="team-card">
+                        <div class="team-icon">
+                            <i class="fas fa-user-friends"></i>
+                        </div>
+                        <div class="team-period">2018</div>
+                        <div class="team-size">25 người</div>
+                        <div class="team-desc">Mở rộng đội ngũ với các vị trí phát triển sản phẩm và kinh doanh</div>
+                    </div>
+                    <div class="team-card">
+                        <div class="team-icon">
+                            <i class="fas fa-people-carry"></i>
+                        </div>
+                        <div class="team-period">2021</div>
+                        <div class="team-size">50 người</div>
+                        <div class="team-desc">Thành lập các phòng ban chuyên môn, mở văn phòng tại TP.HCM</div>
+                    </div>
+                    <div class="team-card">
+                        <div class="team-icon">
+                            <i class="fas fa-network-wired"></i>
+                        </div>
+                        <div class="team-period">2024</div>
+                        <div class="team-size">80+ người</div>
+                        <div class="team-desc">Đội ngũ đa quốc gia với chuyên môn sâu về công nghệ giáo dục</div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <footer>
+        <p>
+            &copy; 2024 Công ty Cổ phần Giáo dục EDU. Tất cả quyền được bảo lưu.
+        </p>
+    </footer>
+</body>
+</html>

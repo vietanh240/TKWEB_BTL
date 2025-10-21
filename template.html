@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Template Báo Cáo - Hỗ Trợ Giáo Viên</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reset và base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #3498db, #2c3e50);
+            color: white;
+            padding: 18px 0;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        
+        /* Nút trở về trang chủ */
+        .home-btn {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+        }
+        
+        .home-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-50%) scale(1.05);
+        }
+        
+        header h1 {
+            margin: 0;
+            font-size: 24px;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+        
+        /* Container chính */
+        .container {
+            display: flex;
+            max-width: 1200px;
+            margin: 40px auto;
+            gap: 30px;
+            padding: 0 20px;
+            flex: 1;
+        }
+        
+        /* Sidebar */
+        .sidebar {
+            width: 280px;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            padding: 25px;
+            height: fit-content;
+            position: sticky;
+            top: 20px;
+        }
+        
+        .sidebar h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+            color: #2c3e50;
+        }
+        
+        .sidebar ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .sidebar li {
+            margin-bottom: 12px;
+        }
+        
+        .sidebar a {
+            text-decoration: none;
+            color: #444;
+            display: block;
+            padding: 10px 15px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+        
+        .sidebar a:hover {
+            background: #3498db;
+            color: white;
+            transform: translateX(5px);
+        }
+        
+        .sidebar a.active {
+            background: #3498db;
+            color: white;
+            box-shadow: 0 4px 8px rgba(52, 152, 219, 0.3);
+        }
+        
+        .sidebar i {
+            margin-right: 10px;
+            width: 20px;
+            text-align: center;
+        }
+        
+        /* Main content */
+        .content {
+            flex: 1;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            padding: 35px;
+        }
+        
+        .content h2 {
+            color: #2c3e50;
+            margin-bottom: 25px;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 12px;
+            font-size: 28px;
+        }
+        
+        .content p {
+            margin-bottom: 20px;
+            text-align: justify;
+            font-size: 16px;
+            color: #555;
+        }
+        
+        /* Phần giới thiệu */
+        .intro-section {
+            background: linear-gradient(to bottom right, #f8f9fa, #e9ecef);
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 35px;
+            border-left: 5px solid #3498db;
+        }
+        
+        .intro-section p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        
+        /* Grid template cards */
+        .templates-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+        
+        .template-card {
+            background: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid #f0f0f0;
+        }
+        
+        .template-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .template-icon {
+            height: 120px;
+            background: linear-gradient(135deg, #3498db, #2c3e50);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 48px;
+        }
+        
+        .template-info {
+            padding: 25px;
+        }
+        
+        .template-name {
+            font-size: 20px;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        
+        .template-description {
+            color: #666;
+            margin-bottom: 20px;
+            font-size: 15px;
+            line-height: 1.5;
+        }
+        
+        .template-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            font-size: 14px;
+            color: #777;
+        }
+        
+        .template-format {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .template-format i {
+            color: #3498db;
+        }
+        
+        .template-size {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .template-size i {
+            color: #27ae60;
+        }
+        
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, #2ecc71, #27ae60);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            width: 100%;
+            justify-content: center;
+        }
+        
+        .download-btn:hover {
+            background: linear-gradient(135deg, #27ae60, #219653);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(46, 204, 113, 0.3);
+        }
+        
+        .download-all {
+            margin-top: 40px;
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #eee;
+        }
+        
+        .download-all-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        
+        .download-all-btn:hover {
+            background: linear-gradient(135deg, #2980b9, #2573a7);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(52, 152, 219, 0.3);
+        }
+        
+        /* Thông báo tải về */
+        .download-notification {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #2ecc71;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.4s ease;
+            z-index: 1000;
+        }
+        
+        .download-notification.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            color: #ecf0f1;
+            text-align: center;
+            padding: 25px 0;
+            margin-top: auto;
+        }
+        
+        footer p {
+            margin: 0;
+            font-size: 15px;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .container {
+                flex-direction: column;
+            }
+            
+            .sidebar {
+                width: 100%;
+                position: static;
+            }
+            
+            .home-btn {
+                position: static;
+                transform: none;
+                margin: 10px auto;
+                display: inline-flex;
+                justify-content: center;
+                background: rgba(255, 255, 255, 0.3);
+            }
+            
+            header {
+                padding: 15px 0;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                margin: 20px auto;
+                gap: 20px;
+            }
+            
+            .content {
+                padding: 25px;
+            }
+            
+            .templates-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            header h1 {
+                font-size: 20px;
+            }
+            
+            .content h2 {
+                font-size: 24px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .content {
+                padding: 20px;
+            }
+            
+            .intro-section {
+                padding: 20px;
+            }
+            
+            .template-info {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <a href="index.html" class="home-btn">
+            <i class="fas fa-home"></i> Trang Chủ
+        </a>
+        <h1>CÔNG TY CỔ PHẦN GIÁO DỤC EDU</h1>
+    </header>
+
+    <div class="container">
+        <!-- Menu bên trái -->
+        <aside class="sidebar">
+            <h3>Danh Mục Hỗ Trợ & Tài Nguyên</h3>
+            <ul>
+                <li>
+                    <a href="nhapdiem.html"><i class="fas fa-keyboard"></i> Hướng dẫn nhập điểm</a>
+                </li>
+                <li>
+                    <a href="quyche.html"><i class="fas fa-scroll"></i> Quy chế đánh giá</a>
+                </li>
+                <li>
+                    <a href="mau.html"><i class="fas fa-file-alt"></i> Mẫu báo cáo</a>
+                </li>
+                <li>
+                    <a href="lienhekythuat.html"><i class="fas fa-headset"></i> Liên hệ kỹ thuật</a>
+                </li>
+                <li>
+                    <a href="bieumau.html"><i class="fas fa-clipboard-list"></i> Biểu mẫu đánh giá</a>
+                </li>
+                <li>
+                    <a href="quydinh.html"><i class="fas fa-balance-scale"></i> Quy định điểm số</a>
+                </li>
+                <li>
+                    <a href="template.html" class="active"><i class="fas fa-file-code"></i> Template báo cáo</a>
+                </li>
+                <li>
+                    <a href="faqs.html"><i class="fas fa-question-circle"></i> FAQs</a>
+                </li>
+            </ul>
+        </aside>
+
+        <!-- Nội dung bên phải -->
+        <main class="content">
+            <h2>Template Báo Cáo</h2>
+            
+            <div class="intro-section">
+                <p>Dưới đây là các mẫu báo cáo chuyên nghiệp giúp giáo viên tổng hợp, phân tích và trình bày điểm học sinh một cách dễ dàng và hiệu quả.</p>
+                <p>Tất cả template đều được thiết kế sẵn theo đúng quy chuẩn của Bộ Giáo dục và Đào tạo, có thể tùy chỉnh dễ dàng để phù hợp với nhu cầu cụ thể của từng giáo viên.</p>
+            </div>
+            
+            <div class="templates-grid">
+                <div class="template-card">
+                    <div class="template-icon">
+                        <i class="fas fa-file-excel"></i>
+                    </div>
+                    <div class="template-info">
+                        <div class="template-name">Báo cáo điểm trung bình</div>
+                        <div class="template-description">Mẫu Excel thống kê điểm trung bình của từng lớp với các công thức tính toán tự động.</div>
+                        <div class="template-meta">
+                            <div class="template-format">
+                                <i class="fas fa-file-excel"></i>
+                                <span>XLSX</span>
+                            </div>
+                            <div class="template-size">
+                                <i class="fas fa-weight-hanging"></i>
+                                <span>256 KB</span>
+                            </div>
+                        </div>
+                        <a href="#" class="download-btn" data-file="Template_BaoCao_DiemTrungBinh.xlsx">
+                            <i class="fas fa-download"></i> Tải về
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="template-card">
+                    <div class="template-icon">
+                        <i class="fas fa-file-word"></i>
+                    </div>
+                    <div class="template-info">
+                        <div class="template-name">Báo cáo học lực</div>
+                        <div class="template-description">Báo cáo tổng hợp kết quả học tập theo từng môn học với định dạng chuyên nghiệp.</div>
+                        <div class="template-meta">
+                            <div class="template-format">
+                                <i class="fas fa-file-word"></i>
+                                <span>DOCX</span>
+                            </div>
+                            <div class="template-size">
+                                <i class="fas fa-weight-hanging"></i>
+                                <span>189 KB</span>
+                            </div>
+                        </div>
+                        <a href="#" class="download-btn" data-file="Template_BaoCao_HocLuc.docx">
+                            <i class="fas fa-download"></i> Tải về
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="template-card">
+                    <div class="template-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="template-info">
+                        <div class="template-name">Phân tích điểm số</div>
+                        <div class="template-description">Biểu đồ thống kê giúp đánh giá xu hướng điểm số và so sánh kết quả giữa các lớp.</div>
+                        <div class="template-meta">
+                            <div class="template-format">
+                                <i class="fas fa-file-powerpoint"></i>
+                                <span>PPTX</span>
+                            </div>
+                            <div class="template-size">
+                                <i class="fas fa-weight-hanging"></i>
+                                <span>512 KB</span>
+                            </div>
+                        </div>
+                        <a href="#" class="download-btn" data-file="Template_PhanTich_DiemSo.pptx">
+                            <i class="fas fa-download"></i> Tải về
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="template-card">
+                    <div class="template-icon">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <div class="template-info">
+                        <div class="template-name">Báo cáo tổng kết kỳ</div>
+                        <div class="template-description">Mẫu Word báo cáo kết quả tổng kết học kỳ cho từng lớp với cấu trúc chuẩn.</div>
+                        <div class="template-meta">
+                            <div class="template-format">
+                                <i class="fas fa-file-word"></i>
+                                <span>DOCX</span>
+                            </div>
+                            <div class="template-size">
+                                <i class="fas fa-weight-hanging"></i>
+                                <span>224 KB</span>
+                            </div>
+                        </div>
+                        <a href="#" class="download-btn" data-file="Template_BaoCao_TongKet_Ky.docx">
+                            <i class="fas fa-download"></i> Tải về
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="template-card">
+                    <div class="template-icon">
+                        <i class="fas fa-chart-pie"></i>
+                    </div>
+                    <div class="template-info">
+                        <div class="template-name">Thống kê học lực</div>
+                        <div class="template-description">Template Excel với biểu đồ hình tròn và cột để phân tích phân loại học lực học sinh.</div>
+                        <div class="template-meta">
+                            <div class="template-format">
+                                <i class="fas fa-file-excel"></i>
+                                <span>XLSX</span>
+                            </div>
+                            <div class="template-size">
+                                <i class="fas fa-weight-hanging"></i>
+                                <span>348 KB</span>
+                            </div>
+                        </div>
+                        <a href="#" class="download-btn" data-file="Template_ThongKe_HocLuc.xlsx">
+                            <i class="fas fa-download"></i> Tải về
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="template-card">
+                    <div class="template-icon">
+                        <i class="fas fa-table"></i>
+                    </div>
+                    <div class="template-info">
+                        <div class="template-name">Bảng điểm chi tiết</div>
+                        <div class="template-description">Mẫu bảng điểm đầy đủ các cột điểm thành phần, có công thức tính trung bình tự động.</div>
+                        <div class="template-meta">
+                            <div class="template-format">
+                                <i class="fas fa-file-excel"></i>
+                                <span>XLSX</span>
+                            </div>
+                            <div class="template-size">
+                                <i class="fas fa-weight-hanging"></i>
+                                <span>198 KB</span>
+                            </div>
+                        </div>
+                        <a href="#" class="download-btn" data-file="Template_BangDiem_ChiTiet.xlsx">
+                            <i class="fas fa-download"></i> Tải về
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="download-all">
+                <a href="#" class="download-all-btn" id="downloadAll">
+                    <i class="fas fa-file-archive"></i> Tải tất cả template (.ZIP)
+                </a>
+            </div>
+        </main>
+    </div>
+
+    <div class="download-notification" id="downloadNotification">
+        <i class="fas fa-check-circle"></i>
+        <span id="notificationText">Đang tải xuống...</span>
+    </div>
+
+    <footer>
+        <p>
+            &copy; 2024 Trường THCS & THPT Chất Lượng Cao. Tất cả quyền được bảo lưu.
+        </p>
+    </footer>
+
+    <script>
+        // Tạo các file template mẫu để tải về
+        function createSampleFile(filename, content) {
+            const blob = new Blob([content], { type: 'application/octet-stream' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = filename;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+        
+        // Nội dung mẫu cho các file
+        const fileContents = {
+            'Template_BaoCao_DiemTrungBinh.xlsx': 'Template Excel - Báo cáo điểm trung bình',
+            'Template_BaoCao_HocLuc.docx': 'Template Word - Báo cáo học lực',
+            'Template_PhanTich_DiemSo.pptx': 'Template PowerPoint - Phân tích điểm số',
+            'Template_BaoCao_TongKet_Ky.docx': 'Template Word - Báo cáo tổng kết kỳ',
+            'Template_ThongKe_HocLuc.xlsx': 'Template Excel - Thống kê học lực',
+            'Template_BangDiem_ChiTiet.xlsx': 'Template Excel - Bảng điểm chi tiết',
+            'ALL_TEMPLATES.zip': 'Đây là file ZIP chứa tất cả các template báo cáo.'
+        };
+        
+        // Hiển thị thông báo tải về
+        function showDownloadNotification(filename) {
+            const notification = document.getElementById('downloadNotification');
+            const notificationText = document.getElementById('notificationText');
+            
+            notificationText.textContent = `Đã tải xuống: ${filename}`;
+            notification.classList.add('show');
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000);
+        }
+        
+        // Xử lý sự kiện click cho các nút tải về
+        document.querySelectorAll('.download-btn').forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                const filename = this.getAttribute('data-file');
+                createSampleFile(filename, fileContents[filename]);
+                showDownloadNotification(filename);
+            });
+        });
+        
+        // Xử lý sự kiện click cho nút tải tất cả
+        document.getElementById('downloadAll').addEventListener('click', function(e) {
+            e.preventDefault();
+            createSampleFile('ALL_TEMPLATES.zip', fileContents['ALL_TEMPLATES.zip']);
+            showDownloadNotification('ALL_TEMPLATES.zip');
+        });
+    </script>
+</body>
+</html>
