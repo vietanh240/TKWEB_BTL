@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Giới Thiệu - THCS & THPT Chất Lượng Cao</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="../css/style.css" />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background: #fafafa;
+        color: #333;
+      }
+      header {
+        background-color: #3498db;
+        color: white;
+        padding: 15px 0;
+        text-align: center;
+      }
+      header h1 {
+        margin: 0;
+        font-size: 22px;
+        letter-spacing: 1px;
+      }
+      .container {
+        display: flex;
+        max-width: 1200px;
+        margin: 40px auto;
+        gap: 30px;
+        padding: 0 20px;
+      }
+      /* Sidebar */
+      .sidebar {
+        width: 280px;
+        background: #fff;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        height: fit-content;
+      }
+      .sidebar h3 {
+        font-size: 18px;
+        margin-bottom: 15px;
+        border-bottom: 2px solid #3498db;
+        padding-bottom: 8px;
+      }
+      .sidebar ul {
+        list-style: none;
+        padding-left: 0;
+      }
+      .sidebar li {
+        margin-bottom: 10px;
+      }
+      .sidebar a {
+        text-decoration: none;
+        color: #333;
+        display: block;
+        padding: 8px 12px;
+        border-radius: 6px;
+        transition: all 0.2s;
+      }
+      .sidebar a:hover,
+      .sidebar a.active {
+        background: #3498db;
+        color: white;
+      }
+
+      /* Main content */
+      .content {
+        flex: 1;
+        background: #fff;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        padding: 30px;
+      }
+      .content h2 {
+        color: #3498db;
+        margin-bottom: 20px;
+      }
+      .content p {
+        line-height: 1.7;
+        margin-bottom: 15px;
+        text-align: justify;
+      }
+
+      footer {
+        background-color: #222;
+        color: #fff;
+        text-align: center;
+        padding: 15px 0;
+        margin-top: auto;
+      }
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+      }
+
+      /* Cho phần nội dung chiếm toàn bộ chiều cao còn lại */
+      .container {
+        flex: 1;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <h1>TRƯỜNG THCS & THPT CHẤT LƯỢNG CAO</h1>
+    </header>
+
+    <div class="container">
+      <!-- Menu bên trái -->
+      <aside class="sidebar">
+        <h3>Giới thiệu & Hỗ trợ</h3>
+        <ul>
+          <li>
+            <a href="gioithieu.html" class="active"
+              ><i class="fas fa-info-circle"></i> Giới thiệu</a
+            >
+          </li>
+          <li>
+            <a href="thanhtich.html"
+              ><i class="fas fa-trophy"></i> Thành tích</a
+            >
+          </li>
+          <li>
+            <a href="bangiamhieu.html"
+              ><i class="fas fa-user-tie"></i> Ban giám hiệu</a
+            >
+          </li>
+          <li>
+            <a href="lichsu.html"
+              ><i class="fas fa-history"></i> Lịch sử phát triển</a
+            >
+          </li>
+          <li>
+            <a href="huongdan.html"
+              ><i class="fas fa-book"></i> Hướng dẫn sử dụng</a
+            >
+          </li>
+          <li>
+            <a href="lienhe.html"><i class="fas fa-phone"></i> Liên hệ</a>
+          </li>
+          <li>
+            <a href="cauhoi.html"
+              ><i class="fas fa-question-circle"></i> Câu hỏi thường gặp</a
+            >
+          </li>
+          <li>
+            <a href="gopy.html"
+              ><i class="fas fa-comment-dots"></i> Góp ý hệ thống</a
+            >
+          </li>
+        </ul>
+      </aside>
+
+      <!-- Nội dung bên phải -->
+      <main class="content">
+        <h2>Giới thiệu về Trường</h2>
+        <p>
+          Trường THCS & THPT Chất Lượng Cao được thành lập với sứ mệnh mang đến
+          một môi trường học tập hiện đại, sáng tạo, giúp học sinh phát triển
+          toàn diện cả về tri thức và kỹ năng sống.
+        </p>
+        <p>
+          Với đội ngũ giáo viên tận tâm, cơ sở vật chất tiên tiến, nhà trường
+          luôn nỗ lực nâng cao chất lượng giảng dạy, hướng tới việc xây dựng một
+          thế hệ học sinh tự tin, năng động và hội nhập.
+        </p>
+        <p>
+          Trong suốt quá trình phát triển, nhà trường đã đạt nhiều thành tích
+          xuất sắc, khẳng định vị thế là một trong những trường dẫn đầu về chất
+          lượng giáo dục tại địa phương.
+        </p>
+      </main>
+    </div>
+
+    <footer>
+      <p>
+        &copy; 2024 Trường THCS & THPT Chất Lượng Cao. Tất cả quyền được bảo
+        lưu.
+      </p>
+    </footer>
+  </body>
+</html>
