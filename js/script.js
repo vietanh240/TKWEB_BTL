@@ -3,21 +3,21 @@ const users = {
     'student1': { 
         password: '123456', 
         type: 'student', 
-        name: 'Nguyễn Văn A', 
+        name: 'Trần Hữu Long', 
         class: '10A1',
         school: 'TRƯỜNG THCS & THPT NGUYỄN HUỆ'
     },
     'gv_toan': { 
         password: '123456', 
         type: 'teacher', 
-        name: 'Thầy Trần Văn Toán', 
+        name: 'Thầy Trần Hữu Long', 
         subject: 'toan',
         school: 'TRƯỜNG THCS & THPT NGUYỄN HUỆ'
     },
     'gv_van': { 
         password: '123456', 
         type: 'teacher', 
-        name: 'Cô Phạm Thị Văn', 
+        name: 'Cô Phạm Thị Minh', 
         subject: 'van',
         school: 'TRƯỜNG THCS & THPT NGUYỄN HUỆ'
     }
@@ -92,7 +92,7 @@ let forumTopics = JSON.parse(localStorage.getItem('forumTopics')) || [
         title: 'Cách học tốt môn Toán hình học',
         content: 'Mình đang gặp khó khăn với phần hình học không gian, đặc biệt là các bài toán về góc và khoảng cách. Có bạn nào có tips học hiệu quả không? Mình cảm ơn!',
         author: 'student1',
-        authorName: 'Nguyễn Văn A',
+        authorName: 'Nguyễn Văn Long',
         category: 'study',
         date: '2024-01-12',
         replies: [
@@ -105,7 +105,7 @@ let forumTopics = JSON.parse(localStorage.getItem('forumTopics')) || [
         title: 'Kinh nghiệm ôn thi môn Văn hiệu quả',
         content: 'Chia sẻ kinh nghiệm ôn thi môn Ngữ Văn cho kỳ thi THPT sắp tới. Làm thế nào để nhớ được các tác phẩm văn học và viết bài nghị luận hay?',
         author: 'student2',
-        authorName: 'Trần Thị B',
+        authorName: 'Trần Thị Minh',
         category: 'exam',
         date: '2024-01-10',
         replies: [],
@@ -115,9 +115,9 @@ let forumTopics = JSON.parse(localStorage.getItem('forumTopics')) || [
 
 // Dữ liệu điểm
 let students = JSON.parse(localStorage.getItem('students')) || [
-    { id: 'HS001', name: 'Nguyễn Văn A', class: '10A1' },
-    { id: 'HS002', name: 'Trần Thị B', class: '10A1' },
-    { id: 'HS003', name: 'Lê Văn C', class: '10A2' }
+    { id: 'HS001', name: 'Trần Hữu Long', class: '10A1' },
+    { id: 'HS002', name: 'Nguyễn Khắc Minh', class: '10A1' },
+    { id: 'HS003', name: 'Nguyễn Hữu Hoành', class: '10A2' }
 ];
 
 let scores = JSON.parse(localStorage.getItem('scores')) || {
