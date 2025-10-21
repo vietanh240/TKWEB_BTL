@@ -119,7 +119,6 @@ function checkTeacherLogin() {
     
     if (currentUser.school) {
         teacherSchoolName.textContent = `${currentUser.school} - QUẢN LÝ ĐIỂM`;
-        teacherSchoolSlogan.textContent = `Giáo viên: ${currentUser.name} - Môn: ${subjectNames} - ${studentCount} học sinh`;
     }
 }
 
