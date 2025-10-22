@@ -119,7 +119,7 @@ function checkTeacherLogin() {
     
     if (currentUser.school) {
         teacherSchoolName.textContent = `${currentUser.school} - QUẢN LÝ ĐIỂM`;
-        teacherSchoolSlogan.textContent = `Giáo viên: ${currentUser.name} - Môn: ${subjectNames} - ${studentCount} học sinh`;
+        teacherSchoolSlogan.textContent = `Giáo viên: ${currentUser.name} - Môn: ${subjectNames} `;
     }
 }
 
@@ -500,7 +500,6 @@ function loadStudents() {
         
         studentsTbody.appendChild(row);
     });
-    
 }
 
 console.log('DANH SÁCH HỌC SINH HIỆN CÓ:', students);
@@ -1353,7 +1352,7 @@ function loadUploadStyles() {
         const link = document.createElement('link');
         link.id = 'score-upload-styles';
         link.rel = 'stylesheet';
-        link.href = '../quanlydiem/css/score_upload.css';
+        link.href = 'css/score_upload.css';
         document.head.appendChild(link);
     }
 }
