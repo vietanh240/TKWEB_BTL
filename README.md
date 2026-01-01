@@ -30,7 +30,7 @@
   </tr>
 </table>
 
-# 📊 Hệ Thống Quản Lý Điểm Học Tập
+[![📊 Hệ Thống Quản Lý Điểm Học Tập](https://pimp-my-readme-next.vercel.app/api/sliding-text?emojis=&text=%F0%9F%93%8A%20H%E1%BB%87%20Th%E1%BB%91ng%20Qu%E1%BA%A3n%20L%C3%BD%20%C4%90i%E1%BB%83m%20H%E1%BB%8Dc%20T%E1%BA%ADp)](https://pimp-my-readme-next.vercel.app)
 
 ![Facebook](https://img.shields.io/badge/License-MIT-blue)
 ![Facebook](https://img.shields.io/badge/GitHub-Pages-brightgreen)
