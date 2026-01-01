@@ -1,3 +1,35 @@
+[![Typing SVG](https://readme-typing-svg.demolab.com?font=Rubik+Gemstones&pause=1000&color=5DDDF7&center=true&vCenter=true&width=435&lines=Project+Web)](https://git.io/typing-svg)
+
+# Giảng Viên Hướng Dẫn: Nguyễn Hữu Luân
+
+# Nhóm Thực Hiện
+<table>
+  <tr>
+    <td>Thành Viên</td>
+    <td>MSV</td>
+  </tr>
+  <tr>
+    <td>Nguyễn Việt Anh</td>
+    <td>241224467</td>
+  </tr>
+  <tr>
+    <td>Nguyễn Đức Trường</td>
+    <td>241230872</td>
+  </tr>
+  <tr>
+    <td>Nguyễn Hữu Hoành</td>
+    <td>241230736</td>
+  </tr>
+  <tr>
+    <td>Nguyễn Khắc Minh</td>
+    <td>241224482</td>
+  </tr>
+  <tr>
+    <td>Trần Hữu Long</td>
+    <td>241230780</td>
+  </tr>
+</table>
+
 # 📊 Hệ Thống Quản Lý Điểm Học Tập
 
 ![Facebook](https://img.shields.io/badge/License-MIT-blue)
@@ -91,6 +123,13 @@ TKWEB_BTL/
 - Nhập điểm: Chọn học sinh → Chọn môn → Nhập điểm hệ số
 
 - Xem báo cáo: Vào mục "Báo cáo" để xem thống kê
+
+# Development Tools
+- Git & GitHub - Version control và hosting
+
+- GitHub Pages - Deployment miễn phí
+
+- VS Code - Code editor
 
 # 🔧 Cài Đặt & Phát Triển
 ## Yêu cầu hệ thống
