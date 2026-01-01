@@ -1,4 +1,4 @@
-[![Typing SVG](https://readme-typing-svg.demolab.com?font=Rubik+Gemstones&pause=1000&color=5DDDF7&center=true&vCenter=true&width=435&lines=Project+Web)](https://git.io/typing-svg)
+[![Typing SVG](https://readme-typing-svg.demolab.com?font=Rubik+Gemstones&size=50&pause=1000&color=5DDDF7&center=true&vCenter=true&width=435&lines=Project+Web)](https://git.io/typing-svg)
 
 # Giảng Viên Hướng Dẫn: Nguyễn Hữu Luân
 
