@@ -1,4 +1,4 @@
-## <p align="center"><img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Telegram-Animated-Emojis/main/Objects/Books.webp" alt="Books" width="50" height="50" /> [![Typing SVG](https://readme-typing-svg.demolab.com?font=Rubik+Gemstones&size=50&pause=1000&color=5DDDF7&center=true&vCenter=true&width=435&lines=Project+Web)](https://git.io/typing-svg) </p>
+## <p align="center"><img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Telegram-Animated-Emojis/main/Objects/Books.webp" alt="Books" width="50" height="50" />![Typing SVG](https://readme-typing-svg.demolab.com?font=Rubik+Gemstones&size=50&pause=1000&color=5DDDF7&center=true&vCenter=true&width=435&lines=Project+Web) </p>
 
 # 🧑‍🏫 Giảng Viên Hướng Dẫn: Nguyễn Hữu Luân
 
@@ -31,8 +31,7 @@
 </table>
 <br>
 
-[![📊 Hệ Thống Quản Lý Điểm Học Tập](https://pimp-my-readme-next.vercel.app/api/sliding-text?emojis=&text=%F0%9F%93%8A%20H%E1%BB%87%20Th%E1%BB%91ng%20Qu%E1%BA%A3n%20L%C3%BD%20%C4%90i%E1%BB%83m%20H%E1%BB%8Dc%20T%E1%BA%ADp)](https://pimp-my-readme-next.vercel.app)
-
+![📊 Hệ Thống Quản Lý Điểm Học Tập](https://pimp-my-readme-next.vercel.app/api/sliding-text?emojis=&text=%F0%9F%93%8A%20H%E1%BB%87%20Th%E1%BB%91ng%20Qu%E1%BA%A3n%20L%C3%BD%20%C4%90i%E1%BB%83m%20H%E1%BB%8Dc%20T%E1%BA%ADp)
 ![Facebook](https://img.shields.io/badge/License-MIT-blue)
 ![Facebook](https://img.shields.io/badge/GitHub-Pages-brightgreen)
 
