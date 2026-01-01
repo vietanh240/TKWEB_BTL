@@ -1,4 +1,4 @@
-## <p align="center"><img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Telegram-Animated-Emojis/main/Objects/Books.webp" alt="Books" width="25" height="25" /> [![Typing SVG](https://readme-typing-svg.demolab.com?font=Rubik+Gemstones&size=50&pause=1000&color=5DDDF7&center=true&vCenter=true&width=435&lines=Project+Web)](https://git.io/typing-svg) </p>
+## <p align="center"><img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Telegram-Animated-Emojis/main/Objects/Books.webp" alt="Books" width="50" height="50" /> [![Typing SVG](https://readme-typing-svg.demolab.com?font=Rubik+Gemstones&size=50&pause=1000&color=5DDDF7&center=true&vCenter=true&width=435&lines=Project+Web)](https://git.io/typing-svg) </p>
 
 # 🧑‍🏫 Giảng Viên Hướng Dẫn: Nguyễn Hữu Luân
 
